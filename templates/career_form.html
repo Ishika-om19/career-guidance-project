@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Career Guidance Form
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <h2 class="text-center mb-4">Tell Us About Yourself</h2>
+
+    <form method="POST" action="/career-guidance">
+
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-3">
+            <label for="education" class="form-label">Education / Course</label>
+            <input type="text" class="form-control" id="education" name="education" required>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-3">
+            <label for="skills" class="form-label">Your Skills</label>
+            <textarea class="form-control" id="skills" name="skills"
+                      placeholder="Example: HTML, CSS, Python, Java"
+                      required></textarea>
+        </div>
+
+        <!-- Interests -->
+        <div class="mb-3">
+            <label for="interests" class="form-label">Your Interests</label>
+            <textarea class="form-control" id="interests" name="interests"
+                      placeholder="Example: Web development, AI, designing"
+                      required></textarea>
+        </div>
+
+        <!-- Favorite Subjects -->
+        <div class="mb-3">
+            <label for="subjects" class="form-label">Favorite Subjects</label>
+            <input type="text" class="form-control" id="subjects" name="subjects"
+                   placeholder="Example: Computer Science, Mathematics">
+        </div>
+
+        <!-- Strengths -->
+        <div class="mb-3">
+            <label for="strengths" class="form-label">Your Strengths</label>
+            <textarea class="form-control" id="strengths" name="strengths"
+                      placeholder="Example: Problem solving, communication, creativity"
+                      required></textarea>
+        </div>
+
+        <!-- Career Preference -->
+        <div class="mb-3">
+            <label for="career_preference" class="form-label">
+                Career Preference
+            </label>
+
+            <input type="text" class="form-control"
+                   id="career_preference"
+                   name="career_preference"
+                   placeholder="Example: Software Developer, Data Scientist, UI/UX Designer">
+        </div>
+
+        <!-- Current Goal -->
+        <div class="mb-3">
+            <label for="goal" class="form-label">Your Current Goal</label>
+            <textarea class="form-control" id="goal" name="goal"
+                      placeholder="Tell us what you want to achieve..."
+                      required></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+                Get My Career Guidance 🚀
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}
