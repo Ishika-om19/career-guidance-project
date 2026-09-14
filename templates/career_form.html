@@ -8,7 +8,7 @@ Career Guidance Form
 
 <section class="container py-5">
 
-    <h2 class="text-center mb-4">Tell Us About Yourself</h2>
+    <h2 class="text-center mb-4">Start Your Career Journey</h2>
 
     <form method="POST" action="/career-guidance">
 
@@ -20,23 +20,37 @@ Career Guidance Form
 
         <!-- Education -->
         <div class="mb-3">
-            <label for="education" class="form-label">Education / Course</label>
-            <input type="text" class="form-control" id="education" name="education" required>
+            <select name="course" class="form-select" required>
+                <option value="">Select Your Course</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="B.Com">B.Com</option>
+                <option value="BJMC">BJMC</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
 
-        <!-- Skills -->
+        <!-- Year/Semester-->
+         <div class="mb-3">
+            <label class="form-label">Year / Semester</label>
+            <input type="text" class="form-control" name="year_semester" placeholder="Example: 3rd Year / 5th Semester" required>
+         </div>
+
+        <!-- Technologies -->
         <div class="mb-3">
-            <label for="skills" class="form-label">Your Skills</label>
-            <textarea class="form-control" id="skills" name="skills"
-                      placeholder="Example: HTML, CSS, Python, Java"
-                      required></textarea>
+            <label class="form-label">Technologies / Tools You Know</label>
+            <textarea class="form-control" name="technologies"
+                      placeholder="Example: Excel, HTML, CSS, Python, Java, Js"></textarea>
         </div>
 
         <!-- Interests -->
         <div class="mb-3">
             <label for="interests" class="form-label">Your Interests</label>
             <textarea class="form-control" id="interests" name="interests"
-                      placeholder="Example: Web development, AI, designing"
+                      placeholder="Example: Web development, AI, designing, Marketing"
                       required></textarea>
         </div>
 
@@ -51,8 +65,7 @@ Career Guidance Form
         <div class="mb-3">
             <label for="strengths" class="form-label">Your Strengths</label>
             <textarea class="form-control" id="strengths" name="strengths"
-                      placeholder="Example: Problem solving, communication, creativity"
-                      required></textarea>
+                      placeholder="Example: Problem solving, communication, creativity"></textarea>
         </div>
 
         <!-- Career Preference -->
@@ -71,9 +84,14 @@ Career Guidance Form
         <div class="mb-3">
             <label for="goal" class="form-label">Your Current Goal</label>
             <textarea class="form-control" id="goal" name="goal"
-                      placeholder="Tell us what you want to achieve..."
-                      required></textarea>
+                      placeholder="Tell us what you want to achieve..."></textarea>
         </div>
+
+        <!-- Anything Else About Yourself -->
+         <div class="mb-3">
+            <label class="form-label">Anything Else You Want to Tell Us</label>
+            <textarea class="form-control" name="additional_info" placeholder="Tell us anything else about yourself, your background, plans, challenges, or expectations..."></textarea>
+         </div>
 
         <!-- Submit -->
         <div class="text-center mt-4">
@@ -82,7 +100,9 @@ Career Guidance Form
             </button>
         </div>
 
-    </form>
+   
+<Marquee behavior="scroll" direction="left" scrollamount="5" class="scroll mt-4"><b>Note:-</b>Fields like Name, Education, Year/Semester and Interests are required. Other fields are optional. Providing more information will help us give you more personalized career guidance.</Marquee>
+</form>
 
 </section>
 
