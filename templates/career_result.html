@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Career Guidance Result
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <h2 class="text-center mb-4">
+        Career Guidance for {{ name }} 🚀
+    </h2>
+
+    <div class="card shadow-sm p-4">
+        <div class="guidance-content">{{ guidance }}</div>
+    </div>
+
+</section>
+
+{% endblock %}

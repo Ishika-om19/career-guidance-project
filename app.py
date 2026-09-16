@@ -84,7 +84,7 @@ keep the guidance paractical,clear and suitable for a college student .
             else:
                 guidance = "Sorry, AI service is temporarily busy. Please try again agter some time."
 
-    print(guidance)
+    return render_template("career_result.html", guidance=guidance,name=name)
 
     return render_template("index.html")
 

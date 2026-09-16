@@ -92,6 +92,14 @@ Career Guidance Form
             <label class="form-label">Anything Else You Want to Tell Us</label>
             <textarea class="form-control" name="additional_info" placeholder="Tell us anything else about yourself, your background, plans, challenges, or expectations..."></textarea>
          </div>
+         
+        <!-- Bootstrap Spinner-->
+<div id="loading-message" class="text-center mt-3" style="display: none;">
+    <div class="spinner-border text-primary" role="status"></div> <!--spinner-border is bootstrap class to add spinner -->
+    <p class="mt-2">
+        Generating your personalized career guidance...
+    </p>
+</div>
 
         <!-- Submit -->
         <div class="text-center mt-4">
@@ -100,10 +108,17 @@ Career Guidance Form
             </button>
         </div>
 
+    
    
 <Marquee behavior="scroll" direction="left" scrollamount="5" class="scroll mt-4"><b>Note:-</b>Fields like Name, Education, Year/Semester and Interests are required. Other fields are optional. Providing more information will help us give you more personalized career guidance.</Marquee>
 </form>
 
 </section>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function() {
+        document.getElementById("loading-message").style.display = "block";
+    });
+</script>
 
 {% endblock %}
