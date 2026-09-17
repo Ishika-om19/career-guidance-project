@@ -18,7 +18,7 @@ def home():
 def career_guidance():
     if request.method == "POST":
         name = request.form["name"]
-        education = request.form["course"]
+        course = request.form["course"]
         year_semester = request.form["year_semester"]
         technologies = request.form.get("technologies","")
         interests =  request.form["interests"]
@@ -29,7 +29,7 @@ def career_guidance():
         additional_info = request.form.get("additional_info","")
 
         print(name)
-        print(education)
+        print(course)
         print(year_semester)
         print(technologies)
         print(interests)
@@ -39,32 +39,42 @@ def career_guidance():
         print(goal)
         print(additional_info)
     prompt = f"""
-    You are an AI career guidance counselor.
+You are an AI career guidance counselor.
 
-    Student Name: {name}
-    Education: {education}
-    Year Semester: {year_semester}
-    Technologies: {technologies}
-    Interests: {interests}
-    Favorite Subjects: {subjects}
-    Strengths: {strengths}
-    Career Preference: {career_preference}
-    Current Goal: {goal}
-    Additional Info: {additional_info}
+Student Name: {name}
+Course: {course}
+Year/Semester: {year_semester}
+Technologies/Tools Known: {technologies or "Not provided"}
+Interests: {interests or "Not provided"}
+Favorite Subjects: {subjects or "Not provided"}
+Strengths: {strengths or "Not provided"}
+Career Preference: {career_preference or "Not provided"}
+Current Goal: {goal or "Not provided"}
+Additional Information: {additional_info or "Not provided"}
 
-Based on this information, provide personalized career guidance.
+Based on the information provided, give personalized career guidance to {name}.
+
+Important:
+- Do not assume information that the student did not provide.
+- Use the student's course, year/semester, skills, interests and other available information.
+- If optional information is missing, make recommendations using the information that is available.
+- If the student is unsure about a career preference or goal, help them explore suitable options.
+- Keep recommendations realistic for the student's current academic level.
 
 Include:
-1. Recommended career options
-2. Why these careers are suitable 
-3. Skills  the student should learn
-4. A step-by-step career roadmap
-5. If Project so, project Ideas
-6. Short-term goals
-7. Long-term goals
 
-keep the guidance paractical,clear and suitable for a college student .
-    """
+1. Recommended career options
+2. Why each career is suitable
+3. Skills and technologies to learn
+4. Step-by-step career roadmap
+5. Suitable project ideas
+6. Short-term goals (0-6 months)
+7. Medium-term goals (6-18 months)
+8. Long-term goals (18+ months)
+
+
+Keep the guidance practical, clear, personalized and suitable for the student's current course and year/semester.
+"""
 
     for attempt in range(3):
         try:
