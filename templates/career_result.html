@@ -8,13 +8,13 @@ Career Guidance Result
 
 <section class="container py-5">
 
-    <h2 class="text-center mb-4">
-        Career Guidance for {{ name }} 🚀
+    <h2 class="text-center mb-4 result-title">
+        Your Personalized Career Guidance🚀
     </h2>
-    <p class="text-muted">Here is your personalized career guidance based on the information you provided.</p>
+    <p class="text-center text-muted">Hello {{ name}} ! Here  is your personalized career roadmap.</p>
 
-    <div class="card shadow-sm p-4">
-        <div class="guidance-content">{{ guidance }}</div>
+    <div class="card shadow-sm p-4 guidance-card">
+        <div class="guidance-content text-start">{{ guidance | replace("###","") | replace("**", "")}}</div>
     </div>
 
 </section>

@@ -74,12 +74,22 @@ Include:
 
 
 Keep the guidance practical, clear, personalized and suitable for the student's current course and year/semester.
+
+Format the response with clear heading and bullet point. Use these headings exactly:
+1. Recommended Career Options 
+2. Why These Careers Suits You 
+3. Skills and Technologies to Learn
+4. Career Roadmap
+5. Project Ideas if Project exist other wise skip this point
+6. Short-Term goals
+7. Long-Term goals
+
 """
 
     for attempt in range(3):
         try:
             interaction = client.interactions.create(
-                model="gemini-3.8-flash",
+                model="gemini-3.7-flash",
                 input=prompt
             )
 
