@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from google import genai
 import os
 import time
+import re
 
 load_dotenv()
 
@@ -104,7 +105,10 @@ Format the response with clear heading and bullet point. Use these headings exac
             else:
                 guidance = "Sorry, AI service is temporarily busy. Please try again agter some time."
 
-    return render_template("career_result.html", guidance=guidance,name=name)
+    guidance = guidance.replace("###", "").replace("**", "")
+    sections = re.split(r'\n(?=\d+\.\s)', guidance)
+
+    return render_template("career_result.html", sections=sections,name=name)
 
     return render_template("index.html")
 

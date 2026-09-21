@@ -13,9 +13,13 @@ Career Guidance Result
     </h2>
     <p class="text-center text-muted">Hello {{ name}} ! Here  is your personalized career roadmap.</p>
 
-    <div class="card shadow-sm p-4 guidance-card">
-        <div class="guidance-content text-start">{{ guidance | replace("###","") | replace("**", "")}}</div>
+   {% for section in sections %}
+   <div class="card shadow-sm p-4 guidance-card mb-4">
+    <div class="guidance-content text-start">{{ section }}
+
     </div>
+   </div>
+   {% endfor %}
 
 </section>
 
