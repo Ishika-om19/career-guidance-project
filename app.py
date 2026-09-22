@@ -29,16 +29,6 @@ def career_guidance():
         goal = request.form.get("goal","")
         additional_info = request.form.get("additional_info","")
 
-        print(name)
-        print(course)
-        print(year_semester)
-        print(technologies)
-        print(interests)
-        print(subjects)
-        print(strengths)
-        print(career_preference)
-        print(goal)
-        print(additional_info)
     prompt = f"""
 You are an AI career guidance counselor.
 
@@ -87,7 +77,8 @@ Format the response with clear heading and bullet point. Use these headings exac
 
 """
 
-    for attempt in range(3):
+    guidance = ""
+    for attempt in range(2):
         try:
             interaction = client.interactions.create(
                 model="gemini-3.7-flash",
@@ -105,7 +96,9 @@ Format the response with clear heading and bullet point. Use these headings exac
             else:
                 guidance = "Sorry, AI service is temporarily busy. Please try again agter some time."
 
-    guidance = guidance.replace("###", "").replace("**", "")
+
+    if "Sorry, AI service" not in guidance:
+        guidance = guidance.replace("###", "").replace("**", "")
     sections = re.split(r'\n(?=\d+\.\s)', guidance)
 
     return render_template("career_result.html", sections=sections,name=name)
