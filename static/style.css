@@ -29,27 +29,56 @@ html{
 /* Hero Section */
 
 .hero-section{
-    padding: 120px 20px 80px;
+    padding: 80px 20px 40px;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    background: rgba(3,10,30,0.25);
 }
 
 .hero-section h1 {
     font-size: 45px;
     margin-bottom: 20px;
+    font-weight: 700;
+    color: white;
+    max-width: 850;
+    text-shadow: 0 0 18px rgba(80, 160, 255, 0.8);
 }
 
 .hero-section p {
     font-size: 20px;
+    color: #c9dcff;
+    max-width: 700px;
+    margin: 0 auto 30;
+    line-height: 1.6;
 }
 
 /* Bouncing Arrow */
 .scroll-arrow{
-    display: inline-block;
-    font-size: 120px;
+    display: inline-flex;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid rgba(80, 170, 255, 0.6);
+    border-radius: 50%;
+    color: #55bfff;
+    font-size: 32px;
+    box-shadow: 0 0 15px rgba(0,150,255,0.4);
     text-decoration: none;
     margin-top: 40px;
     animation: bounce 1.5s infinite;
+    justify-content: center;
 }
 
+.scroll-arrow:hover{
+    color: white;
+    background: rgba(70, 100, 255,0.5);
+    box-shadow: 0 0 25px rgba(100 , 100, 255, 0.8);
+}
 
 @keyframes bounce {
     0%, 20%, 50%, 80%,100% {
@@ -99,7 +128,7 @@ html{
 }
 
 .navbar-logo{
-    width: 220px;
+    width: 180px;
     height: auto;
     mix-blend-mode: screen !important;
 }
@@ -115,6 +144,7 @@ html{
     color: #8ec5ff;
 }
 
+/* Form styling */
 .career-form-section{
     max-width: 600px !important;
     margin:40px auto;
@@ -171,4 +201,29 @@ html{
     text-align: left !important;
     display: block !important;
     margin-bottom: 6px;
+}
+
+/* Form heading*/
+.form-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-heading h2 span{
+    background: linear-gradient(90deg, #00c6ff, #9b4dff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-heading p{
+    color: #a9c8ee;
+    font-size: 15px;
+    margin: 0;
+}
+
+.career-form-section form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
