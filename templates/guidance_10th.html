@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+10th Career Guidance
+{% endblock %}
+
+{% block content %}
+
+<section class="guidance-page">
+
+    <div class="guidance-heading">
+        <h1>Career Guidance After 10th 🎓</h1>
+
+        <p>
+            Tell us about your interests and strengths to explore
+            suitable streams and career paths.
+        </p>
+    </div>
+
+    <div class="guidance-form">
+
+        <h2>Tell Us About Yourself</h2>
+
+        <form method="POST">
+
+            <label>Favorite Subjects</label>
+            <input type="text"
+                   name="subjects"
+                   placeholder="Example: Mathematics, Science, English"
+                   required>
+
+            <label>Your Interests</label>
+            <textarea name="interests"
+                      placeholder="Example: Coding, Drawing, Business, Sports"
+                      required></textarea>
+
+            <label>Your Strengths</label>
+            <textarea name="strengths"
+                      placeholder="Example: Problem solving, creativity, communication"></textarea>
+
+            <label>Career Interest</label>
+            <input type="text"
+                   name="career_interest"
+                   placeholder="Example: Doctor, Engineer, Designer">
+
+            <button type="submit">
+                Explore My Career Path 🚀
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
