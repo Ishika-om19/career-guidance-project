@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+College Career Guidance
+{% endblock %}
+
+{% block content %}
+
+<section class="guidance-page">
+
+    <div class="guidance-heading">
+        <h1>Career Guidance for College Students 🎓</h1>
+
+        <p>
+            Tell us about your course, skills and interests to plan
+            your career journey.
+        </p>
+    </div>
+
+    <div class="guidance-form">
+
+        <h2>Tell Us About Yourself</h2>
+
+        <form method="POST">
+
+            <label>Your Course</label>
+            <input type="text"
+                   name="course"
+                   placeholder="Example: BCA, B.Tech, BBA"
+                   required>
+
+            <label>Year / Semester</label>
+            <input type="text"
+                   name="year_semester"
+                   placeholder="Example: 3rd Year / 5th Semester"
+                   required>
+
+            <label>Technologies / Skills You Know</label>
+            <textarea name="skills"
+                      placeholder="Example: C++, Java, Python, HTML, CSS, JavaScript"></textarea>
+
+            <label>Your Interests</label>
+            <textarea name="interests"
+                      placeholder="Example: Web Development, AI, Data Science, Finance"
+                      required></textarea>
+
+            <label>Favorite Subjects</label>
+            <input type="text"
+                   name="subjects"
+                   placeholder="Example: Programming, DBMS, Mathematics">
+
+            <label>Your Strengths</label>
+            <textarea name="strengths"
+                      placeholder="Example: Problem solving, communication, creativity"></textarea>
+
+            <label>Career Preference</label>
+            <input type="text"
+                   name="career_preference"
+                   placeholder="Example: Software Developer, Data Analyst">
+
+            <label>Your Current Goal</label>
+            <textarea name="goal"
+                      placeholder="Example: Get an internship, prepare for placement, learn full-stack development"></textarea>
+
+            <button type="submit">
+                Plan My Career 🚀
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

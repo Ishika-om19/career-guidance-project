@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+12th Career Guidance
+{% endblock %}
+
+{% block content %}
+<section class="guidance-page">
+    <div class="guidance-heading">
+        <h1>Career Guidance After 12th 🎓</h1>
+        <p>Tell us about your stream, interests and strengths to explore suitable courses and career paths.</p>
+    </div>
+    <div class="guidance-form">
+        <h2>Tell Us About Yourself</h2>
+        <form method="POST">
+            <label >Your Stream</label>
+            <select name="stream" required>
+                <option value="">Select your stream</option>
+                <option value="Science">Science</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Humanities">Arts/Humanities</option>
+                <option value="Other">Other</option>
+            </select>
+        <label>Your Interests</label>
+            <textarea name="interests" placeholder="Example: Coding, Business, Designing, Teaching" required></textarea>
+        <label>Your Strengths</label>
+            <textarea name="strengths" placeholder="Example: Problem solving, creativity, communication"></textarea>
+        <label>Career Goal </label>
+          <input type="text" name="career_goal" placeholder="Example: Software Engineer, Business Analyst" required>
+           <button type="submit">
+                Explore My Career Path 🚀
+            </button>
+          </form>
+    </div>
+</section>>
+
+{% endblock %}

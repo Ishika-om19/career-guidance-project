@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Graduate Career Guidance
+{% endblock %}
+
+{% block content %}
+
+<section class="guidance-page">
+
+    <div class="guidance-heading">
+        <h1>Career Guidance for Graduates 🎯</h1>
+
+        <p>
+            Tell us about your education, skills and goals to plan
+            your next career step.
+        </p>
+    </div>
+
+    <div class="guidance-form">
+
+        <h2>Tell Us About Yourself</h2>
+
+        <form method="POST">
+
+            <label>Your Degree / Qualification</label>
+            <input type="text"
+                   name="qualification"
+                   placeholder="Example: BCA, B.Tech, BBA, MBA"
+                   required>
+
+            <label>Your Skills</label>
+            <textarea name="skills"
+                      placeholder="Example: Java, Python, React, Excel, SQL"></textarea>
+
+            <label>Your Interests</label>
+            <textarea name="interests"
+                      placeholder="Example: Software Development, Finance, Marketing"
+                      required></textarea>
+
+            <label>Your Strengths</label>
+            <textarea name="strengths"
+                      placeholder="Example: Problem solving, communication, leadership"></textarea>
+
+            <label>Career Preference</label>
+            <input type="text"
+                   name="career_preference"
+                   placeholder="Example: Software Developer, Data Analyst">
+
+            <label>Your Current Goal</label>
+            <textarea name="goal"
+                      placeholder="Example: Get a job, prepare for higher studies, switch career"></textarea>
+
+            <label>Anything Else You Want to Tell Us</label>
+            <textarea name="additional_info"
+                      placeholder="Tell us about your experience, plans or challenges"></textarea>
+
+            <button type="submit">
+                Plan My Next Career Step 🚀
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

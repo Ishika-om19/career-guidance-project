@@ -311,3 +311,106 @@ html{
     line-height: 1.6;
     margin: 0;
 }
+
+/* 10th Guidance Page */
+
+.guidance-page{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 30px 60px;
+    text-align: center;
+}
+.guidance-heading h1{
+    color: white;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.guidance-heading p{
+    color: #c9d8ff;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+.guidance-form{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(3, 12, 35, 0.85);
+    border: 1px solid rgba(80, 160, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(30, 120, 255, 0.18);
+}
+.guidance-form input, .guidance-form textarea{
+    width: 100%;
+    background: #07152e;
+    color: white;
+    border: 1px solid #2878ff;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+.guidance-form textarea{
+    min-height: 120px;
+    resize: vertical;
+}
+.guidance-form input::placeholder, .guidance-form textarea::placeholder{
+    outline: none;
+    border-color: #4da3ff;
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}
+.guidance-form button{
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #007bff, #7b4dff);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+guidance-form button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(80, 100, 255, 0.35);
+}
+
+.guidance-form label{
+    display: block;
+    text-align: left;
+    color: #d7e8ff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.guidance-form h2{
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.guidance-form input, .guidance-form textarea, .guidance-form select{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #07152e;
+    color: white;
+    border: 1px solid #2878ff;
+    border-radius: 10px;
+    padding: 12px 15px;
+}
+
+/* Dropdown select styling */
+.guidance-form select{
+    appearance: auto;
+    cursor: pointer;
+}
+.guidance-form input::placeholder, .guidance-form textarea::placeholder{
+    color: #9db4d5;
+    opacity: 1;
+}
+/* Focus state the input, textarea, and select elements soft blue glow around the field*/
+.guidance-form input:focus, .guidance-form textarea:focus, .guidance-form select:focus{
+    outline: none;
+    border-color: #4da3ff;
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}

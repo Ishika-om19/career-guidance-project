@@ -19,6 +19,18 @@ def home():
 def guidance_10th():
     return render_template("guidance_10th.html")
 
+@app.route("/guidance/12th")
+def guidance_12th():
+    return render_template("guidance_12th.html")
+
+@app.route("/guidance/college")
+def guidance_college():
+    return render_template("guidance_college.html")
+
+@app.route("/guidance/graduates")
+def guidance_graduates():
+    return render_template("guidance_graduates.html")
+
 @app.route("/career-guidance", methods=["GET", "POST"])
 def career_guidance():
     if request.method == "POST":
