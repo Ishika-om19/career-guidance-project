@@ -15,9 +15,50 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/guidance/10th")
+@app.route("/guidance/10th",methods=["GET", "POST"])
 def guidance_10th():
-    return render_template("guidance_10th.html")
+    if request.method == "POST":
+        name = request.form.get("name")
+        subjects = request.form.get("subjects")
+        interests = request.form.get("interests")
+        strengths = request.form.get("strengths")
+        career_interest = request.form.get("career_interest")
+
+        prompt = f"""
+You are an AI career guidance counselor for students who have passed 10th grade.
+
+Student Name: {name}
+Favorite Subjects: {subjects}
+Interests: {interests}
+Strengths: {strengths}
+Career Interest: {career_interest}
+
+Based on this information, provide personalized career guidance.
+
+Include:
+1. Suitable education streams after 10th
+2. Suitable career options
+3. Why these options may suit the student
+4. Important subjects and skills to focus on
+5. A simple roadmap for the next few years
+6. Practical advice for the student
+
+Keep the guidance clear, realistic and easy for a student to understand.
+"""
+    try:
+        interaction = client.interactions.create(
+                        model="gemini-3.7-flash",
+                        input=prompt
+                    )
+        
+        guidance = interaction.output_text
+    except Exception as e:
+        print("Gemini attempt failed:", e)
+        guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
+
+    print(guidance)
+        
+    return render_template("guidance_10th.html", guidance=guidance)
 
 @app.route("/guidance/12th")
 def guidance_12th():

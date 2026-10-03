@@ -23,6 +23,12 @@
 
         <form method="POST">
 
+            <label >Your Name</label>
+            <input type="text"
+                   name="name"
+                   placeholder="Enter your name"
+                   required>
+
             <label>Favorite Subjects</label>
             <input type="text"
                    name="subjects"
@@ -43,6 +49,14 @@
                    name="career_interest"
                    placeholder="Example: Doctor, Engineer, Designer">
 
+<!--spinner-border is bootstrap class to add spinner -->
+                   <div id="loading-message" class="text-center mt-3" style="display: none;">
+    <div class="spinner-border text-primary" role="status"></div> 
+    <p class="mt-2">
+        Generating your personalized career guidance...
+    </p>
+</div>
+
             <button type="submit">
                 Explore My Career Path 🚀
             </button>
@@ -52,6 +66,17 @@
     </div>
 
 </section>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        document.getElementById("loading-message").style.display = "block";
+        const form = this;
+        setTimeout(function() {
+            form.submit(); // Submit the form after showing the loading message
+        }, 100); // Adjust the delay as needed
+    });
+</script>
 
 {% endblock %}
 
