@@ -17,6 +17,7 @@ def home():
 
 @app.route("/guidance/10th",methods=["GET", "POST"])
 def guidance_10th():
+    guidance = ""
     if request.method == "POST":
         name = request.form.get("name")
         subjects = request.form.get("subjects")
@@ -45,16 +46,19 @@ Include:
 
 Keep the guidance clear, realistic and easy for a student to understand.
 """
-    try:
-        interaction = client.interactions.create(
-                        model="gemini-3.7-flash",
-                        input=prompt
-                    )
-        
-        guidance = interaction.output_text
-    except Exception as e:
-        print("Gemini attempt failed:", e)
-        guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
+
+        try:
+            interaction = client.interactions.create(
+                model="gemini-3.7-flash",
+                input=prompt
+            )
+
+            guidance = interaction.output_text
+            guidance = guidance.replace("###", "").replace("**", "")
+
+        except Exception as e:
+            print("Gemini attempt failed:", e)
+            guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
 
     print(guidance)
         

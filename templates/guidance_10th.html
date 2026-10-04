@@ -20,7 +20,7 @@
     <div class="guidance-form">
 
         <h2>Tell Us About Yourself</h2>
-
+        
         <form method="POST">
 
             <label >Your Name</label>
@@ -62,6 +62,11 @@
             </button>
 
         </form>
+        {% if guidance %}
+    <div class="alert alert-warning text-center mb-4">
+        {{ guidance }}
+    </div>
+{% endif %}
 
     </div>
 
