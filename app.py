@@ -49,7 +49,7 @@ Keep the guidance clear, realistic and easy for a student to understand.
 
         try:
             interaction = client.interactions.create(
-                model="gemini-3.7-flash",
+                model="gemini-3.8-flash",
                 input=prompt
             )
 
@@ -61,8 +61,10 @@ Keep the guidance clear, realistic and easy for a student to understand.
             guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
 
     print(guidance)
-        
-    return render_template("guidance_10th.html", guidance=guidance)
+
+    if request.method == "POST":
+        return render_template("career_result.html", guidance=guidance)  
+    return render_template("guidance_10th.html")
 
 @app.route("/guidance/12th")
 def guidance_12th():
