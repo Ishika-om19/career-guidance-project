@@ -6,29 +6,33 @@ Career Guidance Result
 
 {% block content %}
 
-<section class="container py-5">
+<section class="result-page">
 
-    <h2 class="text-center mb-4 result-title">
-        Your Personalized Career Guidance🚀
-    </h2>
-    <p class="text-center text-muted">Hello {{ name}} ! Here  is your personalized career roadmap.</p>
+    <div class="result-heading">
+        <h1>Your Personalized Career Guidance 🚀</h1>
 
-   <!-- {% for section in sections %}
-   <div class="card shadow-sm p-4 guidance-card mb-4">
-    <div class="guidance-content text-start">{{ section }}
+        <p>
+            Hello {{ name }}! Here is your personalized career roadmap.
+        </p>
+    </div>
+
+    <div class="guidance-result-card">
+
+        <div class="ai-result-header">
+            <span>✨ AI Career Recommendation</span>
+        </div>
+
+        <div class="guidance-content">
+            {{ guidance }}
+        </div>
 
     </div>
-   </div>
-   {% endfor %} -->
 
-<div class="card shadow-sm p-4 guidance-card">
-    <div class="guidance-content text-start">{{guidance}}</div>
-</div>
-
-
-<div class="text-center mt-4">
-    <a href="/#career-form" class="btn btn-primary">← Back to Career</a>
-</div>
+    <div class="result-actions">
+        <a href="/" class="btn btn-primary">
+            ← Back to Career Guidance
+        </a>
+    </div>
 
 </section>
 
