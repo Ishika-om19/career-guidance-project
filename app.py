@@ -115,11 +115,11 @@ Keep the guidance clear, realistic and easy to understand.
             print("Gemini attempt failed:", e)
             guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
 
-            print(guidance)
+    print(guidance)
 
-            if request.method == "POST":
-                return render_template("career_result.html", guidance=guidance, name=name)  
-            return render_template("guidance_12th.html")
+    if request.method == "POST":
+        return render_template("career_result.html", guidance=guidance, name=name)  
+    return render_template("guidance_12th.html")
 
 @app.route("/guidance/college")
 def guidance_college():
