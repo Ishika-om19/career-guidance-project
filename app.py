@@ -66,9 +66,60 @@ Keep the guidance clear, realistic and easy for a student to understand.
         return render_template("career_result.html", guidance=guidance)  
     return render_template("guidance_10th.html")
 
-@app.route("/guidance/12th")
+@app.route("/guidance/12th", methods=["GET", "POST"])
 def guidance_12th():
-    return render_template("guidance_12th.html")
+
+    guidance = ""
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        stream = request.form.get("stream")
+        interests = request.form.get("interests")
+        strengths = request.form.get("strengths")
+        career_goal = request.form.get("career_goal")
+
+        prompt = f"""
+You are an AI career guidance counselor for students who have completed 12th grade.
+
+Student Name: {name}
+12th Stream: {stream}
+Interests: {interests}
+Strengths: {strengths}
+Career Goal: {career_goal}
+
+Based on this information, provide personalized career guidance.
+
+Include:
+
+1. Suitable courses and degree options
+2. Suitable career options
+3. Why these careers may suit the student
+4. Skills and subjects to focus on
+5. A simple career roadmap
+6. Practical advice for the student
+
+Keep the guidance clear, realistic and easy to understand.
+"""
+
+        try:
+            interaction = client.interactions.create(
+                model="gemini-3.8-flash",
+                input=prompt
+            )
+
+            guidance = interaction.output_text
+            guidance = guidance.replace("###", "").replace("**", "")
+
+        except Exception as e:
+            print("Gemini attempt failed:", e)
+            guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
+
+            print(guidance)
+
+            if request.method == "POST":
+                return render_template("career_result.html", guidance=guidance, name=name)  
+            return render_template("guidance_12th.html")
 
 @app.route("/guidance/college")
 def guidance_college():

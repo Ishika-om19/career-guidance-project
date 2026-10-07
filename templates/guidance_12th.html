@@ -32,11 +32,31 @@
             <textarea name="strengths" placeholder="Example: Problem solving, creativity, communication"></textarea>
         <label>Career Goal </label>
           <input type="text" name="career_goal" placeholder="Example: Software Engineer, Business Analyst" required>
+
+          <!--spinner-border is bootstrap class to add spinner -->
+        <div id="loading-message" class="text-center mt-3" style="display: none;">
+    <div class="spinner-border text-primary" role="status"></div> 
+    <p class="mt-2">
+        Generating your personalized career guidance...
+    </p>
+        </div>
+
            <button type="submit">
                 Explore My Career Path 🚀
             </button>
           </form>
     </div>
 </section>>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        document.getElementById("loading-message").style.display = "block";
+        const form = this;
+        setTimeout(function() {
+            form.submit(); // Submit the form after showing the loading message
+        }, 100); // Adjust the delay as needed
+    });
+</script>
 
 {% endblock %}
