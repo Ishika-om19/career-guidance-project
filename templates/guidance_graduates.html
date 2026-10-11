@@ -61,6 +61,14 @@ Graduate Career Guidance
             <textarea name="additional_info"
                       placeholder="Tell us about your experience, plans or challenges"></textarea>
 
+          <!--spinner-border is bootstrap class to add spinner -->
+        <div id="loading-message" class="text-center mt-3" style="display: none;">
+    <div class="spinner-border text-primary" role="status"></div> 
+    <p class="mt-2">
+        Generating your personalized career guidance...
+    </p>
+        </div>
+
             <button type="submit">
                 Plan My Next Career Step 🚀
             </button>
@@ -70,5 +78,15 @@ Graduate Career Guidance
     </div>
 
 </section>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        document.getElementById("loading-message").style.display = "block";
+        const form = this;
+        setTimeout(function() {
+            form.submit(); // Submit the form after showing the loading message
+        }, 100); // Adjust the delay as needed
+    });
+</script>
 
 {% endblock %}

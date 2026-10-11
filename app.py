@@ -121,12 +121,123 @@ Keep the guidance clear, realistic and easy to understand.
         return render_template("career_result.html", guidance=guidance, name=name)  
     return render_template("guidance_12th.html")
 
-@app.route("/guidance/college")
+@app.route("/guidance/college",methods=["GET", "POST"])
 def guidance_college():
+    guidance = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        course = request.form.get("course")
+        year_semester = request.form.get("year_semester")
+        skills = request.form.get("skills")
+        interests = request.form.get("interests")
+        subjects = request.form.get("subjects")
+        strengths = request.form.get("strengths")
+        career_preference = request.form.get("career_preference")
+        goal = request.form.get("goal")
+
+        prompt = f"""
+You are an AI career guidance counselor for students who have passed 10th grade.
+
+Student Name: {name}
+Course: {course}
+Year/Semester: {year_semester}
+Skills: {skills}
+Interests: {interests}
+Favorite Subjects: {subjects}
+Strengths: {strengths}
+Career Preference: {career_preference}
+Goal: {goal}
+
+Based on this information, provide personalized career guidance.
+
+Include:
+1. Suitable Recommended career options
+2. Skills and technologies to learn
+3. Why these options may suit the student
+4. Project & Practical Experience ideas to work on
+5. A simple roadmap for the next few years and career opportunities & preparation
+6. Practical advice for the student with respect to their current course and year/semester
+
+Keep the guidance clear, realistic and easy for a student to understand.
+"""
+
+        try:
+            interaction = client.interactions.create(
+                model="gemini-3.8-flash",
+                input=prompt
+            )
+
+            guidance = interaction.output_text
+            guidance = guidance.replace("###", "").replace("**", "")
+
+        except Exception as e:
+            print("Gemini attempt failed:", e)
+            guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
+
+    print(guidance)
+
+    if request.method == "POST":
+        return render_template("career_result.html", guidance=guidance)  
     return render_template("guidance_college.html")
 
-@app.route("/guidance/graduates")
+@app.route("/guidance/graduates",methods=["GET", "POST"])
 def guidance_graduates():
+    guidance = ""
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        qualification = request.form.get("qualification")
+        skills = request.form.get("skills")
+        interests = request.form.get("interests")
+        strengths = request.form.get("strengths")
+        career_preference = request.form.get("career_preference")
+        goal = request.form.get("goal")
+        additional_info = request.form.get("additional_info")
+
+        prompt = f"""
+You are an AI career guidance counselor for students who have completed 12th grade.
+
+Student Name: {name}
+Qualification: {qualification}
+Skills: {skills}
+Interests: {interests}
+Strengths: {strengths}
+Career Preference: {career_preference}
+Goal: {goal}
+Additional Information: {additional_info}
+
+Based on this information, provide personalized career guidance.
+
+Include:
+
+1. personalized career options based on the student's qualification, skills, interests, and strengths
+2. skills gap analysis and development recommendations
+3. job, internship, and further industry opportunities based on the student's career preference and goal
+4. projects, resume and interview preparation guidance
+5. Why these careers may suit the student
+6. personalized roadmap for the next few years and career opportunities & preparation
+
+Keep the guidance clear, realistic and easy to understand.
+"""
+
+        try:
+            interaction = client.interactions.create(
+                model="gemini-3.8-flash",
+                input=prompt
+            )
+
+            guidance = interaction.output_text
+            guidance = guidance.replace("###", "").replace("**", "")
+
+        except Exception as e:
+            print("Gemini attempt failed:", e)
+            guidance = "Sorry, the AI service is temporarily unavailable. Please try again later."
+
+    print(guidance)
+
+    if request.method == "POST":
+        return render_template("career_result.html", guidance=guidance, name=name)  
     return render_template("guidance_graduates.html")
 
 @app.route("/career-guidance", methods=["GET", "POST"])
