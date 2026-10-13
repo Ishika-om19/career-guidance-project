@@ -28,90 +28,109 @@ html{
 /* Hero Section */
 
 .hero-section{
-    padding: 80px 20px 40px;
+    padding: 85px 8% 55px;
     min-height: 480px;
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    text-align: center;
-    background: rgba(3,10,30,0.25);
+    text-align: left;
+    background: linear-gradient(90deg, rgba(2, 8, 28, 0.55), rgba(2, 8, 28, 0.08));
+}
+
+.hero-content{
+    max-width: 700px;
+}
+
+.hero-badge{
+    display: inline-block;
+    padding: 9px 16px;
+    margin-bottom: 20px;
+    color: #e7eaff;
+    background: rgba(65, 70, 180, 0.25);
+    border: 1px solid rgba(140, 100, 255, 0.6);
+    border-radius: 30px;
 }
 
 .hero-section h1 {
-    font-size: 45px;
-    margin-bottom: 20px;
-    font-weight: 700;
-    margin-top: 10px;
-    color: white;
-    max-width: 850;
-    text-shadow: 0 0 18px rgba(80, 160, 255, 0.8);
+    font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 800;
+    max-width: 700px;
+    margin: 0 0 20px;
+    color: #ffffff;
+    line-height: 1.12;
+    text-shadow: 0 0 15px rgba(80, 160, 255, 0.25);   
+}
+
+.hero-gradient{
+    background: linear-gradient(90deg, #00c6ff, #8b5cf6, #d946ef);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-section p {
-    font-size: 20px;
-    color: #c9dcff;
-    max-width: 700px;
-    margin: 0 auto 30;
-    line-height: 1.6;
+    font-size: 18px;
+    color: #d4e3ff;
+    max-width: 570px;
+    margin: 0 0 25px;
+    line-height: 1.7;
 }
 
-/* Bouncing Arrow */
-.scroll-arrow{
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 30px;
+
+    color: #dce7ff;
+    font-size: 14px;
+}
+
+.hero-button {
     display: inline-flex;
     align-items: center;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: 1px solid rgba(80, 170, 255, 0.6);
-    border-radius: 50%;
-    color: #55bfff;
-    font-size: 32px;
-    box-shadow: 0 0 15px rgba(0,150,255,0.4);
+    gap: 18px;
+
+    padding: 14px 24px;
+    border-radius: 30px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
-    margin-top: 40px;
-    animation: bounce 1.5s infinite;
-    justify-content: center;
+
+    background: linear-gradient(90deg, #713bff, #168dff);
+    box-shadow: 0 0 22px rgba(90, 70, 255, 0.35);
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 
-.scroll-arrow:hover{
+.hero-button:hover {
     color: white;
-    background: rgba(70, 100, 255,0.5);
-    box-shadow: 0 0 25px rgba(100 , 100, 255, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(90, 100, 255, 0.5);
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%,100% {
-        transform: translateY(0);
+/* Mobile hero layout */
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: auto;
+        padding: 75px 22px 45px;
     }
-    40%{
-        transform: translateY(15px);
+
+    .hero-section h1 {
+        font-size: 38px;
     }
-    60%{
-        transform: translateY(7px);
+
+    .hero-section p {
+        font-size: 16px;
+    }
+
+    .hero-features {
+        flex-direction: column;
+        gap: 12px;
     }
 }
 
-.scroll{
-    color: white;
-}
-
-.guidance-content{
-    white-space: pre-wrap;
-    line-height: 1.7;
-    font-size: 17px;
-    color: #333;
-}
-.guidance-card{
-    max-width: 900px;
-    margin: 30px auto;
-    border-radius: 15px;
-}
-
-.result-title{
-    font-size: 36px;
-    font-weight: 700;
-}
 
 /* Navbar */
 .custom-navbar{
@@ -161,8 +180,148 @@ html{
     color: #55c8ff;
 }
 
+/* Common Career Guidance Form */
+.career-form-section {
+    width: min(1200px, calc(100% - 40px));
+    max-width: 1200px !important;
+    margin: 10px auto 50px;
+    padding: 30px;
+
+    background: rgba(3, 10, 32, 0.78) !important;
+    border: 1px solid rgba(65, 130, 255, 0.65) !important;
+    border-radius: 22px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 0 30px rgba(30, 100, 255, 0.18),
+        inset 0 0 25px rgba(40, 80, 180, 0.08);
+}
+
+/* Form heading */
+.form-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.form-heading h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.form-heading h2 span {
+    background: linear-gradient(90deg, #00c6ff, #a855f7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-heading p {
+    color: #b9cdef;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Two-column form layout */
+.career-form-section form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.career-form-section form > .mb-3 {
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+
+/* Input labels */
+.career-form-section .form-label {
+    display: block;
+    text-align: left;
+    color: #d3e4ff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Input fields */
+.career-form-section .form-control,
+.career-form-section .form-select {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(7, 21, 46, 0.9) !important;
+    color: white !important;
+
+    border: 1px solid rgba(80, 145, 255, 0.45) !important;
+    border-radius: 11px;
+    padding: 13px 14px;
+}
+
+.career-form-section .form-control::placeholder {
+    color: #9db4d5 !important;
+    opacity: 1;
+}
+
+.career-form-section .form-control:focus,
+.career-form-section .form-select:focus {
+    border-color: #54baff !important;
+    box-shadow: 0 0 12px rgba(50, 145, 255, 0.25) !important;
+}
+
+.career-form-section .form-select option {
+    background: #07152e;
+    color: white;
+}
+
+/* Full-width button and note */
+.career-form-section form > .text-center,
+.career-form-section form > marquee {
+    grid-column: 1 / -1;
+}
+
+.career-form-section .text-center button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #7040ff, #168dff, #b42bff);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+
+    box-shadow: 0 0 20px rgba(95, 75, 255, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.career-form-section .text-center button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(95, 75, 255, 0.4);
+}
+
+/* Form on mobile */
+@media (max-width: 576px) {
+    .career-form-section {
+        width: calc(100% - 24px);
+        padding: 22px 16px;
+        margin-top: 10px;
+    }
+
+    .career-form-section form {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-heading h2 {
+        font-size: 27px;
+    }
+}
+
 /* Form styling */
-.career-form-section{
+/* .career-form-section{
     max-width: 600px !important;
     margin:40px auto;
     padding: 30px !important;
@@ -218,10 +377,10 @@ html{
     text-align: left !important;
     display: block !important;
     margin-bottom: 6px;
-}
+} */
 
 /* Form heading*/
-.form-heading {
+/* .form-heading {
     text-align: center;
     margin-bottom: 30px;
 }
@@ -243,10 +402,10 @@ html{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-}
+} */
 
 /*> is used for select the direct child */
-.career-form-section form > .mb-3{  
+/* .career-form-section form > .mb-3{  
     width: 100%;
 }
 
@@ -260,7 +419,7 @@ html{
     border-radius: 12px;
     font-size: 17px;
     font-weight: 600;
-}
+} */
 
 /* Career Options Section */
 .career-options {
@@ -348,17 +507,20 @@ html{
     padding: 100px 30px 60px;
     text-align: center;
 }
+
 .guidance-heading h1{
     color: white;
     font-size: 38px;
     font-weight: 700;
     margin-bottom: 20px;
 }
+
 .guidance-heading p{
     color: #c9d8ff;
     font-size: 17px;
     margin-bottom: 35px;
 }
+
 .guidance-form{
     max-width: 600px;
     margin: 0 auto;
@@ -368,6 +530,7 @@ html{
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(30, 120, 255, 0.18);
 }
+
 .guidance-form input, .guidance-form textarea{
     width: 100%;
     background: #07152e;
@@ -377,15 +540,18 @@ html{
     padding: 12px 15px;
     margin-bottom: 20px;
 }
+
 .guidance-form textarea{
     min-height: 120px;
     resize: vertical;
 }
+
 .guidance-form input::placeholder, .guidance-form textarea::placeholder{
     outline: none;
     border-color: #4da3ff;
     box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
 }
+
 .guidance-form button{
     width: 100%;
     padding: 14px;
@@ -398,7 +564,8 @@ html{
     border: none;
     cursor: pointer;
 }
-guidance-form button:hover{
+
+.guidance-form button:hover{
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(80, 100, 255, 0.35);
 }
