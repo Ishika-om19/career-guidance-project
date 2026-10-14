@@ -29,6 +29,205 @@
         <option value="graduate">Graduate</option>
     </select>
 </div>
+<!-- Education-specific fields start here -->
+<div id="education-fields">
+
+    <!-- We will add the 10th, 12th, College
+         and Graduate field groups here. -->
+         <!-- 10th Passed Fields -->
+         <div id="fields-10th" class="education-group">
+
+    <div class="mb-3">
+        <label class="form-label">Favorite Subjects</label>
+        <input type="text"
+               class="form-control"
+               name="favorite_subjects_10th"
+               placeholder="Example: Mathematics, Science">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Interests</label>
+        <input type="text"
+               class="form-control"
+               name="interests_10th"
+               placeholder="Example: Coding, Technology, Drawing">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Strengths</label>
+        <input type="text"
+               class="form-control"
+               name="strengths_10th"
+               placeholder="Example: Problem solving, Creativity">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Preferred Stream</label>
+        <select class="form-select" name="preferred_stream">
+            <option value="">Select a stream</option>
+            <option value="Science">Science</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
+        </select>
+    </div>
+
+</div>
+    <!-- 12th pass field -->
+     <div id="fields-12th" class="education-group">
+
+    <div class="mb-3">
+        <label class="form-label">12th Stream</label>
+        <select class="form-select" name="stream_12th">
+            <option value="">Select your stream</option>
+            <option value="Science">Science</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Favorite Subjects</label>
+        <input type="text"
+               class="form-control"
+               name="favorite_subjects_12th"
+               placeholder="Example: Mathematics, Physics">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Interests</label>
+        <input type="text"
+               class="form-control"
+               name="interests_12th"
+               placeholder="Example: Programming, Business">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Preferred Course</label>
+        <input type="text"
+               class="form-control"
+               name="preferred_course"
+               placeholder="Example: BCA, B.Tech, BBA">
+    </div>
+
+</div>
+  
+    <!-- college pass field -->
+    <div id="fields-college" class="education-group">
+
+    <div class="mb-3">
+        <label class="form-label">Your Course</label>
+        <input type="text"
+               class="form-control"
+               name="course_college"
+               placeholder="Example: BCA">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Year / Semester</label>
+        <input type="text"
+               class="form-control"
+               name="year_semester"
+               placeholder="Example: 3rd Year / 5th Semester">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Technologies / Skills You Know</label>
+        <input type="text"
+               class="form-control"
+               name="skills_college"
+               placeholder="Example: HTML, CSS, JavaScript, Python">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Favorite Subjects</label>
+        <input type="text"
+               class="form-control"
+               name="favorite_subjects_college"
+               placeholder="Example: Computer Science, Mathematics">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Interests</label>
+        <input type="text"
+               class="form-control"
+               name="interests_college"
+               placeholder="Example: Web Development, AI">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Strengths</label>
+        <input type="text"
+               class="form-control"
+               name="strengths_college"
+               placeholder="Example: Problem solving, Communication">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Current Goal</label>
+        <input type="text"
+               class="form-control"
+               name="goal_college"
+               placeholder="Tell us what you want to achieve">
+    </div>
+
+</div>
+
+    <!-- graduate field -->
+
+<div id="fields-graduate" class="education-group">
+
+    <div class="mb-3">
+        <label class="form-label">Qualification</label>
+        <input type="text"
+               class="form-control"
+               name="qualification"
+               placeholder="Example: BCA, B.Tech, B.Sc">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Skills</label>
+        <input type="text"
+               class="form-control"
+               name="skills_graduate"
+               placeholder="Example: Java, Python, React">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Interests</label>
+        <input type="text"
+               class="form-control"
+               name="interests_graduate"
+               placeholder="Example: Software Development, Data Science">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Strengths</label>
+        <input type="text"
+               class="form-control"
+               name="strengths_graduate"
+               placeholder="Example: Problem solving, Leadership">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Career Goal</label>
+        <input type="text"
+               class="form-control"
+               name="career_goal_graduate"
+               placeholder="Example: Become a Software Developer">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Additional Information</label>
+        <textarea
+            class="form-control"
+            name="additional_info"
+            placeholder="Anything else you want to tell us"></textarea>
+    </div>
+
+</div>
+
+</div>
+<!-- Education-specific fields end here -->
 
         <!-- Year/Semester-->
          <div class="mb-3">
@@ -157,3 +356,33 @@
     });
 </script>
 
+<script>
+    const educationLevel = document.getElementById("education_level");
+
+    const educationGroups = {
+        "10th": document.getElementById("fields-10th"),
+        "12th": document.getElementById("fields-12th"),
+        "college": document.getElementById("fields-college"),
+        "graduate": document.getElementById("fields-graduate")
+    };
+
+    function showEducationFields() {
+
+        // Sabhi education groups hide karo
+        Object.values(educationGroups).forEach(group => {
+            group.style.display = "none";
+        });
+
+        // Selected education level ka group show karo
+        const selectedGroup = educationGroups[educationLevel.value];
+
+        if (selectedGroup) {
+            selectedGroup.style.display = "contents";
+        }
+    }
+
+    educationLevel.addEventListener("change", showEducationFields);
+
+    // Page load hone par bhi correct fields show hon
+    showEducationFields();
+</script>
