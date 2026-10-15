@@ -29,7 +29,15 @@
         <option value="graduate">Graduate</option>
     </select>
 </div>
+
+<!-- Education selection message -->
+<div id="education-message" class="education-message">
+    <span>👆</span>
+    <p>Select your education level to continue</p>
+</div>
+
 <!-- Education-specific fields start here -->
+
 <div id="education-fields">
 
     <!-- We will add the 10th, 12th, College
@@ -228,66 +236,6 @@
 
 </div>
 <!-- Education-specific fields end here -->
-
-        <!-- Year/Semester-->
-         <div class="mb-3">
-            <label class="form-label">Year / Semester</label>
-            <input type="text" class="form-control" name="year_semester" placeholder="Example: 3rd Year / 5th Semester" required>
-         </div>
-
-        <!-- Technologies -->
-        <div class="mb-3">
-            <label class="form-label">Technologies / Tools You Know</label>
-            <textarea class="form-control" name="technologies"
-                      placeholder="Example: Excel, HTML, CSS, Python, Java, Js"></textarea>
-        </div>
-
-        <!-- Interests -->
-        <div class="mb-3">
-            <label for="interests" class="form-label">Your Interests</label>
-            <textarea class="form-control" id="interests" name="interests"
-                      placeholder="Example: Web development, AI, designing, Marketing"
-                      required></textarea>
-        </div>
-
-        <!-- Favorite Subjects -->
-        <div class="mb-3">
-            <label for="subjects" class="form-label">Favorite Subjects</label>
-            <input type="text" class="form-control" id="subjects" name="subjects"
-                   placeholder="Example: Computer Science, Mathematics">
-        </div>
-
-        <!-- Strengths -->
-        <div class="mb-3">
-            <label for="strengths" class="form-label">Your Strengths</label>
-            <textarea class="form-control" id="strengths" name="strengths"
-                      placeholder="Example: Problem solving, communication, creativity"></textarea>
-        </div>
-
-        <!-- Career Preference -->
-        <div class="mb-3">
-            <label for="career_preference" class="form-label">
-                Career Preference
-            </label>
-
-            <input type="text" class="form-control"
-                   id="career_preference"
-                   name="career_preference"
-                   placeholder="Example: Software Developer, Data Scientist, UI/UX Designer">
-        </div>
-
-        <!-- Current Goal -->
-        <div class="mb-3">
-            <label for="goal" class="form-label">Your Current Goal</label>
-            <textarea class="form-control" id="goal" name="goal"
-                      placeholder="Tell us what you want to achieve..."></textarea>
-        </div>
-
-        <!-- Anything Else About Yourself -->
-         <div class="mb-3">
-            <label class="form-label">Anything Else You Want to Tell Us</label>
-            <textarea class="form-control" name="additional_info" placeholder="Tell us anything else about yourself, your background, plans, challenges, or expectations..."></textarea>
-         </div>
          
         <!-- Bootstrap Spinner-->
 <div id="loading-message" class="text-center mt-3" style="display: none;">
@@ -298,7 +246,7 @@
 </div>
 
         <!-- Submit -->
-        <div class="text-center mt-4">
+        <div id="submit-section" class="text-center mt-4 " style="display: none;">
             <button type="submit" class="btn btn-primary">
                 Get My Career Guidance 🚀
             </button>
@@ -358,6 +306,7 @@
 
 <script>
     const educationLevel = document.getElementById("education_level");
+    const submitSection = document.getElementById("submit-section");
 
     const educationGroups = {
         "10th": document.getElementById("fields-10th"),
@@ -378,6 +327,9 @@
 
         if (selectedGroup) {
             selectedGroup.style.display = "contents";
+            submitSection.style.display = "block";
+        } else {
+            submitSection.style.display = "none";
         }
     }
 

@@ -163,12 +163,6 @@ html{
     -webkit-text-fill-color: transparent;
 }
 
-/* .navbar-logo{
-    width: 180px;
-    height: auto;
-    mix-blend-mode: screen !important;
-} */
-
 .custom-navbar .nav-link{
     color: #a4eaff;
     font-size: 17px;
@@ -319,107 +313,6 @@ html{
         font-size: 27px;
     }
 }
-
-/* Form styling */
-/* .career-form-section{
-    max-width: 600px !important;
-    margin:40px auto;
-    padding: 30px !important;
-    background: rgba(5,15,35,0.65) !important;
-    border: 1px solid rgba(80,150,255,0.5) !important;
-    border-radius: 20px;
-    backdrop-filter: blur(2px);
-    box-shadow: 0 0 30px rgba(30,120,255,0.15);
-}
-
-.career-form-section .form-control,
-.career-form-section .form-section{
-    background: rgba(10, 25, 55, 0.65) ;
-    color: white ;
-    border: 1px solid rgba(80, 150, 255, 0.35) ;
-    border-radius: 10px;
-    padding: 12px 15px;
-}
-
-.career-form-section .form-control:focus,
-.career-form-section .form-select:focus{
-    background: rgba(10,25,55,0.85) ;
-    color: white;
-    border-color: #4da3ff;
-    box-shadow: 0 0 10px rgba(77, 163, 255, 0.3) !important;
-}
-
-.career-form-section .form-control:placeholder{
-    color: #9db4d5;
-}
-
-.career-form-section select.form-select{
-    background-color: #07152e !important;
-    color: white !important;
-    border: 1px solid #2878ff !important;
-}
-
-.career-form-section select.form-select option{
-    background-color: #07152e;
-    color: white;
-}
-
-.career-form-section h2{
-    color: white;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
-
-.career-form-section .form-lable{
-    color: #b9d7ff !important;
-    font-weight: 500 !important;
-    text-align: left !important;
-    display: block !important;
-    margin-bottom: 6px;
-} */
-
-/* Form heading*/
-/* .form-heading {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.form-heading h2 span{
-    background: linear-gradient(90deg, #00c6ff, #9b4dff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.form-heading p{
-    color: #a9c8ee;
-    font-size: 15px;
-    margin: 0;
-}
-
-.career-form-section form{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-} */
-
-/*> is used for select the direct child */
-/* .career-form-section form > .mb-3{  
-    width: 100%;
-}
-
-.career-form-section form > .text-center, .career-form-section form > marquee{
-    grid-column: 1 / -1;
-}
-
-.career-form-section .text-center button {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 17px;
-    font-weight: 600;
-} */
 
 /* Career Options Section */
 .career-options {
@@ -679,3 +572,32 @@ html{
     font-weight: 600;
 }
 
+.education-message {
+    width: fit-content;
+    max-width: 90%;
+    grid-column: 1 / -1;
+    margin: 15px auto 25px;
+    padding: 12px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px dashed rgba(100, 180, 255, 0.6);
+    border-radius: 15px;
+
+    background: rgba(10, 25, 55, 0.45);
+    color: #dbeafe;
+
+    text-align: center;
+    font-size: 15px;
+}
+
+.education-message span {
+    font-size: 20px;
+}
+
+.education-message p {
+    margin: 0;
+}
