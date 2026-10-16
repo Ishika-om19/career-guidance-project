@@ -307,6 +307,7 @@
 <script>
     const educationLevel = document.getElementById("education_level");
     const submitSection = document.getElementById("submit-section");
+    const educationMessage = document.getElementById("education-message");
 
     const educationGroups = {
         "10th": document.getElementById("fields-10th"),
@@ -328,8 +329,10 @@
         if (selectedGroup) {
             selectedGroup.style.display = "contents";
             submitSection.style.display = "block";
+            educationMessage.style.display = "none";
         } else {
             submitSection.style.display = "none";
+            educationMessage.style.display = "flex";
         }
     }
 
