@@ -22,9 +22,15 @@ Career Guidance Result
             <span>✨ AI Career Recommendation</span>
         </div>
 
-        <div class="guidance-content">
-            {{ guidance }}
+<div class="guidance-content">
+
+    {% for section in sections %}
+        <div class="guidance-section">
+            {{ section | safe }}
         </div>
+    {% endfor %}
+
+</div>
 
     </div>
 

@@ -368,7 +368,7 @@ Format the response with these headings exactly:
         for attempt in range(2):
             try:
                 interaction = client.interactions.create(
-                    model="gemini-3.7-flash",
+                    model="gemini-3.8-flash",
                     input=prompt
                 )
 
@@ -391,6 +391,7 @@ Format the response with these headings exactly:
         return render_template(
             "career_result.html",
             guidance=guidance,
+            sections=sections,
             name=name
         )
 
