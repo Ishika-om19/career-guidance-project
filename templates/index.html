@@ -5,14 +5,8 @@ Home - Career Guidance
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<!-- <section class="hero-section text-center">
-    <h1>Discover your perfect Career Path </h1>
-    <p>Tell us about your skills, interests and goals - let AI help you discover the right direction.</p>
-    <a href="#career-form" class="scroll-arrow">
-        ↓
-    </a> -->
 
+<!-- Hero Section -->
 <section class="hero-section">
 
     <div class="hero-content">
@@ -29,7 +23,7 @@ Home - Career Guidance
         <p>
             Tell us about your skills, interests and goals.
             Let AI help you discover the right direction
-            and build a brighter future!
+            and build a brighter future.
         </p>
 
         <div class="hero-features">
@@ -44,7 +38,48 @@ Home - Career Guidance
 
     </div>
 
+
+    <!-- Floating Career Cards -->
+    <div class="hero-floating-cards">
+
+        <div class="floating-card card-ai">
+            <div class="floating-icon">🧠</div>
+            <div>
+                <strong>AI Guidance</strong>
+                <small>Personalized for you</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-career">
+            <div class="floating-icon">🎯</div>
+            <div>
+                <strong>Career Match</strong>
+                <small>Find your best path</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-skills">
+            <div class="floating-icon">💡</div>
+            <div>
+                <strong>Skill Growth</strong>
+                <small>Learn what matters</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-future">
+            <div class="floating-icon">🚀</div>
+            <div>
+                <strong>Build Your Future</strong>
+                <small>Plan • Learn • Achieve</small>
+            </div>
+        </div>
+
+    </div>
+
 </section>
 
+
+<!-- Career Guidance Form -->
 {% include "career_form.html" %}
+
 {% endblock %}
