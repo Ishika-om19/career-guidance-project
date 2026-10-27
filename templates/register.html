@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register - Career Guidance
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-page">
+
+    <div class="auth-card">
+
+        <h1>Create Your Account</h1>
+
+        <p>Register to manage your personalized career journey.</p>
+
+        <form method="POST" action="/register">
+
+            <div>
+                <label>Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div>
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

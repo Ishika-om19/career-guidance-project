@@ -1,22 +1,87 @@
-  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-  <div class="container">
-    <!-- <a class="navbar-brand" href="#">
-      <img src="{{ url_for('static', filename='careerlogo.png') }}" alt="Career Guidance" class="navbar-logo">
-    </a> -->
-    <a class="navbar-brand brand-text" href="/">
-      <span>Career</span>
-      <span class="brand-gradient">Guide AI</span>
-    </a>
-   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/#career-form">Career Guidance</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand brand-text" href="/">
+            <span>Career</span>
+            <span class="brand-gradient">Guide AI</span>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse"
+             id="navbarSupportedContent">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <!-- Always visible -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#career-form">
+                        Career Guidance
+                    </a>
+                </li>
+
+                {% if session.get("user_id") %}
+
+                    <!-- Logged-in user -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daily-routine">
+                            Daily Routine
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link logout-link" href="/logout">
+                            Logout
+                        </a>
+                    </li>
+
+                {% else %}
+
+                    <!-- Logged-out user -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link register-link" href="/register">
+                            Register
+                        </a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
     </div>
-  </div>
+
 </nav>

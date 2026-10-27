@@ -1,15 +1,286 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, session, redirect
 from dotenv import load_dotenv
 from google import genai
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+import bcrypt
 import os
 import time
 import re
 
 load_dotenv()
 
+mongo_client = MongoClient(os.getenv("MONGO_URL"))
+
+db = mongo_client["career_guidance"]
+
+users_collection = db["users"]
+
 client = genai.Client()
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+
+    if request.method == "POST":
+
+        name = request.form["name"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        # Check whether email already exists
+        existing_user = users_collection.find_one({"email": email})
+
+        if existing_user:
+            return "Email already registered!"
+
+        # Hash password before storing it
+        hashed_password = bcrypt.hashpw(
+            password.encode("utf-8"),
+            bcrypt.gensalt()
+        )
+
+        # Save user in MongoDB
+        users_collection.insert_one({
+            "name": name,
+            "email": email,
+            "password": hashed_password
+        })
+
+        return "Registration successful!"
+
+    return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+
+        email = request.form["email"]
+        password = request.form["password"]
+
+        # Find user by email
+        user = users_collection.find_one({"email": email})
+
+        if not user:
+            return "Invalid email or password!"
+
+        # Check password
+        if bcrypt.checkpw(
+            password.encode("utf-8"),
+            user["password"]
+        ):
+            session["user_id"] = str(user["_id"])
+            session["user_name"] = user["name"]
+
+            return redirect("/dashboard")
+
+        return "Invalid email or password!"
+
+    return render_template("login.html")
+
+@app.route("/dashboard")
+def dashboard():
+
+    if "user_id" not in session:
+        return redirect("/login")
+    print("USER NAME:",session.get("user_name"))
+    return render_template(
+        "dashboard.html",
+        name=session["user_name"]
+    )
+
+@app.route("/profile")
+def profile():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    user = users_collection.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
+    return render_template(
+        "profile.html",
+        user=user
+    )
+
+@app.route("/logout")
+def logout():
+
+    session.clear()
+
+    return redirect("/login")
+
+@app.route("/daily-routine", methods=["GET", "POST"])
+def daily_routine():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    if request.method == "POST":
+        # POST wala code
+        time = request.form["time"]
+        target = request.form["target"]
+        duration = request.form["duration"]
+        category = request.form["category"]
+
+        routine_item = {
+            "_id": ObjectId(),
+
+            "time": time,
+            "target": target,
+            "duration": duration,
+            "category": category,
+            "completed": False
+        }
+
+        users_collection.update_one(
+            {"_id": ObjectId(session["user_id"])},
+            {"$push": {"daily_routine": routine_item}}
+        )
+
+        return redirect("/daily-routine")
+
+    user = users_collection.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
+    routine = user.get("daily_routine", [])
+
+    total_targets = len(routine)
+
+    completed_targets = sum(
+        1 for item in routine if item.get("completed", False)
+    )
+
+    if total_targets > 0:
+        progress = int((completed_targets / total_targets) * 100)
+    else:
+        progress = 0
+
+    return render_template(
+        "daily_planner.html",
+        name=session["user_name"],
+        routine=routine,
+        progress=progress,
+        total_targets=total_targets,
+        completed_targets=completed_targets
+    )
+
+@app.route("/complete-target", methods=["POST"])
+def complete_target():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    target_id = request.form["target_id"]
+
+    user_id = ObjectId(session["user_id"])
+
+    user = users_collection.find_one({
+        "_id": user_id
+    })
+
+    routine = user.get("daily_routine", [])
+
+    for item in routine:
+
+        if str(item["_id"]) == target_id:
+
+            # Toggle completed status
+            item["completed"] = not item.get("completed", False)
+
+            break
+
+    users_collection.update_one(
+        {"_id": user_id},
+        {"$set": {"daily_routine": routine}}
+    )
+
+    return redirect("/daily-routine")
+
+@app.route("/delete-target", methods=["POST"])
+def delete_target():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    target_id = request.form["target_id"]
+
+    users_collection.update_one(
+        {"_id": ObjectId(session["user_id"])},
+        {
+            "$pull": {
+                "daily_routine": {
+                    "_id": ObjectId(target_id)
+                }
+            }
+        }
+    )
+
+    return redirect("/daily-routine")
+
+@app.route("/edit-target", methods=["GET", "POST"])
+def edit_target():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+    # Get target ID
+    if request.method == "POST":
+        target_id = request.form["target_id"]
+    else:
+        target_id = request.args.get("target_id")
+
+    user_id = ObjectId(session["user_id"])
+
+    # Find user
+    user = users_collection.find_one({
+        "_id": user_id
+    })
+
+    routine = user.get("daily_routine", [])
+
+    # POST → update target
+    if request.method == "POST":
+
+        for item in routine:
+
+            if str(item["_id"]) == target_id:
+
+                item["time"] = request.form["time"]
+                item["target"] = request.form["target"]
+                item["duration"] = request.form["duration"]
+                item["category"] = request.form["category"]
+
+                break
+
+        users_collection.update_one(
+            {"_id": user_id},
+            {"$set": {"daily_routine": routine}}
+        )
+
+        return redirect("/daily-routine")
+
+    # GET → show existing target
+    target = None
+
+    for item in routine:
+
+        if str(item["_id"]) == target_id:
+            target = item
+            break
+
+    if not target:
+        return "Target not found!"
+
+    return render_template(
+        "edit_target.html",
+        target=target
+    )
 
 @app.route("/")
 def home():
@@ -394,6 +665,11 @@ Format the response with these headings exactly:
             sections=sections,
             name=name
         )
+
+@app.route("/daily-planner")
+def daily_planner():
+    return render_template("daily_planner.html")
+
 
     return render_template("index.html")
 

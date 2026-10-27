@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}
+Daily Target Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="planner-page">
+
+    <div class="planner-heading">
+        <span>✦ Daily Productivity Planner</span>
+
+        <h1>
+            Plan Your <span>Day</span>
+        </h1>
+
+        <p>
+            Set your daily targets, manage your routine,
+            and stay consistent with your goals.
+        </p>
+    </div>
+
+    <div class="planner-card">
+
+        <h2>➕ Add Daily Target</h2>
+
+        <form method="POST" action="/daily-routine">
+
+            <div>
+                <label>Time</label>
+                <input type="time" name="time" required>
+            </div>
+
+            <div>
+                <label>Target</label>
+                <input type="text" name="target"
+                       placeholder="Example: Java Learning" required>
+            </div>
+
+            <div>
+                <label>Duration</label>
+                <input type="text" name="duration"
+                       placeholder="Example: 1 hour" required>
+            </div>
+
+            <div>
+                <label>Category</label>
+                <select name="category" required>
+                    <option value="">Select Category</option>
+                    <option>Academic</option>
+                    <option>Skill Development</option>
+                    <option>Health</option>
+                    <option>Personal</option>
+                </select>
+            </div>
+
+            <button type="submit">
+                Add Target +
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="progress-section">
+
+    <div class="progress-header">
+        <h2>Today's Progress</h2>
+        <span>{{ progress }}%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill"style="width: {{ progress }}%;">
+        </div>
+    </div>
+
+    <p>
+        {{ completed_targets }} of {{ total_targets }} targets completed
+    </p>
+
+</div>
+
+
+    <div class="routine-section">
+
+        <h2>Today's Routine</h2>
+
+        <div class="routine-table">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Target</th>
+                        <th>Duration</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                    <tbody>
+
+    {% for item in routine %}
+
+    <tr>
+        <td>{{ item.time }}</td>
+        <td>{{ item.target }}</td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.category }}</td>
+        <td>
+    <form method="POST" action="/complete-target">
+        <input type="hidden" name="target_id" value="{{ item._id }}">
+        <button type="submit">
+            {% if item.completed %}
+                ✅ Completed
+            {% else %}
+                ☐ Mark Complete
+            {% endif %}
+        </button>
+    </form>
+</td>
+<td>
+    <form method="GET" action="/edit-target">
+    <input type="hidden" name="target_id" value="{{ item._id }}">
+
+    <button type="submit" class="edit-icon">
+        ✏️
+    </button>
+</form>
+    <form method="POST" action="/delete-target">
+        <input type="hidden" name="target_id" value="{{ item._id }}">
+
+        <button type="submit" class="delete-icon">
+            🗑️
+        </button>
+    </form>
+</td>
+    </tr>
+
+    {% endfor %}
+
+</tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

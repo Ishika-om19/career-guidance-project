@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard - Career Guidance
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+
+        <p class="dashboard-welcome">
+            Welcome back 👋
+        </p>
+
+        <h1>
+            {{ name }}
+        </h1>
+
+        <p>
+            Plan your day, build your skills and work towards your career goals.
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-cards">
+
+        <!-- Career Guidance -->
+
+        <a href="/#career-form" class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🤖
+            </div>
+
+            <h2>
+                Career Guidance
+            </h2>
+
+            <p>
+                Get personalized AI-powered career guidance based on your education,
+                skills, interests and goals.
+            </p>
+
+            <span>
+                Get Guidance →
+            </span>
+
+        </a>
+
+
+        <!-- Daily Routine -->
+
+        <a href="/daily-routine" class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📅
+            </div>
+
+            <h2>
+                Daily Routine
+            </h2>
+
+            <p>
+                Create and manage your daily study, learning,
+                health and personal targets.
+            </p>
+
+            <span>
+                Open Routine →
+            </span>
+
+        </a>
+
+
+        <!-- Today's Progress -->
+
+        <a href="/daily-routine" class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📊
+            </div>
+
+            <h2>
+                Today's Progress
+            </h2>
+
+            <p>
+                Track your completed targets and monitor
+                your daily productivity progress.
+            </p>
+
+            <span>
+                View Progress →
+            </span>
+
+        </a>
+
+
+        <!-- Profile -->
+
+        <a href="/profile" class="dashboard-card">
+
+            <div class="dashboard-icon">
+                👤
+            </div>
+
+            <h2>
+                My Profile
+            </h2>
+
+            <p>
+                View and manage your account information
+                and personal career details.
+            </p>
+
+            <span>
+                View Profile →
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

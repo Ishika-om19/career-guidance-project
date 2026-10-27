@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Daily Target
+{% endblock %}
+
+{% block content %}
+
+<section class="planner-page">
+
+    <div class="planner-heading">
+
+        <span>✦ Update Your Target</span>
+
+        <h1>
+            Edit <span>Target</span>
+        </h1>
+
+        <p>
+            Update your daily target details and save your changes.
+        </p>
+
+    </div>
+
+    <div class="planner-card">
+
+        <h2>✏️ Edit Daily Target</h2>
+
+        <form method="POST" action="/edit-target">
+
+            <input type="hidden"
+                   name="target_id"
+                   value="{{ target._id }}">
+
+            <div>
+                <label>Time</label>
+                <input type="time"
+                       name="time"
+                       value="{{ target.time }}"
+                       required>
+            </div>
+
+            <div>
+                <label>Target</label>
+                <input type="text"
+                       name="target"
+                       value="{{ target.target }}"
+                       required>
+            </div>
+
+            <div>
+                <label>Duration</label>
+                <input type="text"
+                       name="duration"
+                       value="{{ target.duration }}"
+                       required>
+            </div>
+
+            <div>
+                <label>Category</label>
+
+                <select name="category" required>
+
+                    <option value="Academic"
+                        {% if target.category == "Academic" %}selected{% endif %}>
+                        Academic
+                    </option>
+
+                    <option value="Skill Development"
+                        {% if target.category == "Skill Development" %}selected{% endif %}>
+                        Skill Development
+                    </option>
+
+                    <option value="Health"
+                        {% if target.category == "Health" %}selected{% endif %}>
+                        Health
+                    </option>
+
+                    <option value="Personal"
+                        {% if target.category == "Personal" %}selected{% endif %}>
+                        Personal
+                    </option>
+
+                </select>
+            </div>
+
+            <button type="submit">
+                Update Target ✓
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

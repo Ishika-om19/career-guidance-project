@@ -312,84 +312,36 @@ a {
 }
 
 
-/* =====================================================
+/* =========================
    CAREER GUIDANCE FORM
-   ===================================================== */
+   ========================= */
 
 .career-form-section {
-    position: relative;
+    width: min(1000px, calc(100% - 40px));
+    margin: 20px auto 60px;
+    padding: 30px;
 
-    width: min(1150px, calc(100% - 40px));
+    background: rgba(5, 15, 40, 0.72);
+    border: 1px solid rgba(90, 170, 255, 0.45);
+    border-radius: 22px;
 
-    margin: -20px auto 70px;
-    padding: 38px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-    overflow: hidden;
-
-    border: 1px solid rgba(100, 175, 255, 0.4);
-    border-radius: 25px;
-
-    background: rgba(4, 12, 35, 0.82);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.3),
-        0 0 35px rgba(50, 120, 255, 0.12);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* Decorative glow */
-
-.career-form-section::before,
-.career-form-section::after {
-    content: "";
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    filter: blur(70px);
-
-    pointer-events: none;
-}
-
-.career-form-section::before {
-    width: 260px;
-    height: 260px;
-
-    top: -140px;
-    right: -100px;
-
-    background: rgba(0, 198, 255, 0.12);
-}
-
-.career-form-section::after {
-    width: 220px;
-    height: 220px;
-
-    bottom: -120px;
-    left: -90px;
-
-    background: rgba(150, 70, 255, 0.12);
-}
-
-
-/* ---------- FORM HEADING ---------- */
+/* Heading */
 
 .form-heading {
-    position: relative;
-    z-index: 1;
-
     text-align: center;
     margin-bottom: 30px;
 }
 
 .form-heading h2 {
-    margin-bottom: 8px;
-
+    margin: 0 0 8px;
     color: white;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 800;
 }
 
@@ -400,103 +352,66 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
-.form-heading h2::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 3px;
-
-    margin: 12px auto 0;
-
-    border-radius: 10px;
-
-    background: linear-gradient(90deg, #00c6ff, #a855f7);
-}
-
 .form-heading p {
     margin: 0;
-
-    color: #afc6e8;
-    font-size: 14px;
+    color: #b9ccef;
+    font-size: 15px;
 }
 
-
-/* ---------- FORM GRID ---------- */
+/* Form */
 
 .career-form-section form {
-    position: relative;
-    z-index: 1;
-
     display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
 
 .career-form-section form > .mb-3 {
-    width: 100%;
     margin: 0 !important;
 }
 
+/* Labels */
+
 .career-form-section .form-label {
     display: block;
-
     margin-bottom: 7px;
 
-    color: #d9e9ff;
-
-    font-size: 13px;
+    color: #dceaff;
+    font-size: 14px;
     font-weight: 600;
-
     text-align: left;
 }
+
+/* Inputs */
 
 .career-form-section .form-control,
 .career-form-section .form-select {
     width: 100%;
+    box-sizing: border-box;
 
     padding: 12px 14px;
 
     color: white !important;
-
     background: rgba(8, 22, 48, 0.9) !important;
 
-    border: 1px solid rgba(90, 160, 255, 0.35) !important;
-    border-radius: 11px;
+    border: 1px solid rgba(90, 160, 255, 0.4) !important;
+    border-radius: 10px;
 
-    transition: 0.25s ease;
+    transition: 0.2s ease;
 }
 
 .career-form-section .form-control::placeholder {
     color: #8fa8cb !important;
 }
 
-.career-form-section .form-control:hover,
-.career-form-section .form-select:hover {
-    border-color: rgba(100, 190, 255, 0.65) !important;
-}
-
 .career-form-section .form-control:focus,
 .career-form-section .form-select:focus {
     outline: none;
-
     border-color: #55c8ff !important;
-
-    box-shadow: 0 0 14px rgba(60, 170, 255, 0.2) !important;
-
-    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(60, 170, 255, 0.25) !important;
 }
 
-.career-form-section .form-select option {
-    background: #07152e;
-    color: white;
-}
-
-
-/* ---------- EDUCATION MESSAGE ---------- */
+/* Education message */
 
 .education-message {
     grid-column: 1 / -1;
@@ -504,81 +419,65 @@ a {
     width: fit-content;
     max-width: 90%;
 
-    margin: 3px auto 8px;
-    padding: 10px 20px;
+    margin: 2px auto 5px;
+    padding: 10px 18px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 9px;
+    gap: 8px;
 
-    border: 1px dashed rgba(100, 180, 255, 0.45);
-    border-radius: 14px;
+    border: 1px dashed rgba(100, 180, 255, 0.5);
+    border-radius: 12px;
 
-    background: rgba(20, 45, 90, 0.25);
-
+    background: rgba(15, 35, 75, 0.35);
     color: #dbeafe;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .education-message p {
     margin: 0;
-    color: #dbeafe;
-    font-size: 14px;
 }
 
-
-/* ---------- EDUCATION GROUPS ---------- */
+/* Education fields */
 
 .education-group {
     display: contents;
 }
 
-
-/* ---------- SUBMIT BUTTON ---------- */
+/* Submit */
 
 .career-form-section form > .text-center {
     grid-column: 1 / -1;
-
     margin-top: 5px;
 }
 
 .career-form-section .text-center button {
-    position: relative;
-
     width: 100%;
-
     padding: 14px;
 
-    overflow: hidden;
-
     border: none;
-    border-radius: 12px;
+    border-radius: 11px;
 
     color: white;
-
     font-size: 16px;
     font-weight: 700;
 
-    background: linear-gradient(90deg, #7040ff, #168dff, #b42bff);
+    background: linear-gradient(90deg, #7040ff, #168dff);
 
-    box-shadow: 0 8px 25px rgba(80, 80, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(80, 80, 255, 0.25);
 
-    transition: 0.25s ease;
+    transition: 0.2s ease;
 }
 
 .career-form-section .text-center button:hover {
     transform: translateY(-2px);
-
-    box-shadow: 0 12px 30px rgba(80, 100, 255, 0.45);
+    box-shadow: 0 10px 25px rgba(80, 100, 255, 0.4);
 }
 
-
-/* ---------- LOADING ---------- */
+/* Loading */
 
 #loading-message {
     grid-column: 1 / -1;
-
     color: #cfe5ff;
 }
 
@@ -587,70 +486,89 @@ a {
     font-size: 14px;
 }
 
-
-/* ---------- NOTE ---------- */
+/* Note */
 
 .career-form-section marquee {
     grid-column: 1 / -1;
-
     margin-top: 5px;
 
     color: #9fb9dc;
     font-size: 12px;
 }
 
+/* Mobile */
 
-/* =====================================================
-   CAREER OPTION CARDS
-   ===================================================== */
+@media (max-width: 576px) {
 
-.career-options {
-    max-width: 1150px;
+    .career-form-section {
+        width: calc(100% - 24px);
+        padding: 25px 18px;
+        margin-top: 15px;
+    }
 
-    margin: 0 auto 80px;
-    padding: 20px;
+    .career-form-section form {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-heading h2 {
+        font-size: 27px;
+    }
+
+    .form-heading p {
+        font-size: 14px;
+    }
 }
 
-.career-options h2 {
-    margin-bottom: 10px;
 
-    color: white;
+/* =========================
+   CAREER OPTION CARDS
+   ========================= */
 
-    font-size: 36px;
-    font-weight: 800;
+.career-options {
+    max-width: 1100px;
+    margin: 160px auto 70px;
+    padding: 20px ;
     text-align: center;
 }
 
+.career-options h2 {
+    margin-bottom: 12px;
+    color: white;
+    font-size: 38px;
+    font-weight: 800;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
 .career-options > p {
-    margin-bottom: 35px;
-
-    color: #b9ccef;
-
+    margin-bottom:40px;
+    color: #c9d8ff;
     font-size: 16px;
     text-align: center;
 }
 
+/* Cards */
+
 .career-options-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 20px;
 }
 
 .career-option-card {
+    display: block;
+
     padding: 28px 20px;
 
     color: white;
+    text-decoration: none;
 
-    text-align: center;
+    background: rgba(8, 20, 50, 0.55);
+    border: 1px solid rgba(100, 180, 255, 0.35);
+    border-radius: 18px;
 
-    border: 1px solid rgba(100, 175, 255, 0.28);
-    border-radius: 20px;
-
-    background: rgba(8, 22, 50, 0.62);
-
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     transition: 0.3s ease;
 }
@@ -658,34 +576,86 @@ a {
 .career-option-card:hover {
     transform: translateY(-7px);
 
-    border-color: rgba(110, 190, 255, 0.7);
+    border-color: #55c8ff;
 
-    box-shadow: 0 15px 35px rgba(50, 110, 255, 0.2);
+    background: rgba(15, 35, 75, 0.75);
 
-    background: rgba(12, 32, 70, 0.75);
+    box-shadow: 0 12px 30px rgba(50, 130, 255, 0.25);
 }
+
+/* Icon */
 
 .option-icon {
-    margin-bottom: 14px;
+    width: 55px;
+    height: 55px;
 
-    font-size: 40px;
+    margin: 0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    border-radius: 15px;
+
+    background: rgba(70, 150, 255, 0.15);
+    border: 1px solid rgba(100, 180, 255, 0.25);
 }
+
+/* Card heading */
 
 .career-option-card h3 {
     margin-bottom: 10px;
 
     color: white;
-
     font-size: 21px;
+    font-weight: 700;
 }
+
+/* Card text */
 
 .career-option-card p {
     margin: 0;
 
-    color: #b7c9e5;
-
+    color: #b9caff;
     font-size: 14px;
     line-height: 1.6;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+
+    .career-options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+    .career-options {
+        padding: 20px 18px;
+        margin: 60px auto 50px;
+    }
+
+    .career-options h2 {
+        font-size: 29px;
+    }
+
+    .career-options > p {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .career-options-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
 }
 
 
@@ -1075,3 +1045,927 @@ a {
         font-size: 15px;
     }
 }
+
+/* =====================================================
+   DAILY TARGET PLANNER
+   ===================================================== */
+
+.planner-page {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 110px 25px 80px;
+}
+
+/* ---------- HEADING ---------- */
+
+.planner-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.planner-heading > span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+
+    color: #dce9ff;
+    font-size: 13px;
+
+    background: rgba(80, 100, 220, 0.2);
+    border: 1px solid rgba(130, 150, 255, 0.4);
+    border-radius: 30px;
+}
+
+.planner-heading h1 {
+    margin: 0 0 15px;
+
+    color: white;
+    font-size: clamp(38px, 5vw, 55px);
+    font-weight: 800;
+}
+
+.planner-heading h1 span {
+    background: linear-gradient(90deg, #00c6ff, #8b5cf6, #d946ef);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.planner-heading p {
+    max-width: 600px;
+    margin: auto;
+
+    color: #b9ccef;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ---------- ADD TARGET CARD ---------- */
+
+.planner-card {
+    padding: 30px;
+
+    background: rgba(4, 12, 35, 0.82);
+
+    border: 1px solid rgba(100, 175, 255, 0.4);
+    border-radius: 22px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(50, 120, 255, 0.1);
+}
+
+.planner-card h2 {
+    margin: 0 0 25px;
+
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+/* ---------- FORM ---------- */
+
+.planner-card form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1.3fr;
+    gap: 16px;
+    align-items: end;
+}
+
+.planner-card label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #d9e9ff;
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+}
+
+.planner-card input,
+.planner-card select {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 13px;
+
+    color: white !important;
+    background: rgba(8, 22, 48, 0.95) !important;
+
+    border: 1px solid rgba(90, 160, 255, 0.35) !important;
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+.planner-card input::placeholder {
+    color: #8fa8cb;
+}
+
+.planner-card input:focus,
+.planner-card select:focus {
+    border-color: #55c8ff !important;
+    box-shadow: 0 0 12px rgba(60, 170, 255, 0.2);
+}
+
+.planner-card select option {
+    background: #07152e;
+    color: white;
+}
+
+
+/* ---------- ADD BUTTON ---------- */
+
+.planner-card button {
+    width: 100%;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        90deg,
+        #7040ff,
+        #168dff
+    );
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 22px rgba(80, 80, 255, 0.25);
+
+    transition: 0.25s ease;
+}
+
+.planner-card button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 28px rgba(80, 100, 255, 0.45);
+}
+
+
+/* ---------- ROUTINE SECTION ---------- */
+
+.routine-section {
+    margin-top: 55px;
+}
+
+.routine-section h2 {
+    margin-bottom: 22px;
+
+    color: white;
+    font-size: 28px;
+    font-weight: 750;
+
+    text-align: left;
+}
+
+
+/* ---------- TABLE CARD ---------- */
+
+.routine-table {
+    overflow-x: auto;
+
+    background: rgba(4, 12, 35, 0.82);
+
+    border: 1px solid rgba(100, 175, 255, 0.35);
+    border-radius: 20px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.22);
+}
+
+.routine-table table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    color: white;
+}
+
+.routine-table th {
+    padding: 16px 18px;
+
+    color: #bfe4ff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-align: left;
+
+    background: rgba(30, 100, 220, 0.18);
+
+    border-bottom: 1px solid rgba(100, 175, 255, 0.25);
+}
+
+.routine-table td {
+    padding: 16px 18px;
+
+    color: #d8e7ff;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid rgba(100, 150, 220, 0.12);
+}
+
+.routine-table tbody tr {
+    transition: 0.2s ease;
+}
+
+.routine-table tbody tr:hover {
+    background: rgba(70, 130, 255, 0.08);
+}
+
+.routine-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    .planner-page {
+        padding: 95px 15px 60px;
+    }
+
+    .planner-card {
+        padding: 22px 18px;
+    }
+
+    .planner-card form {
+        grid-template-columns: 1fr;
+    }
+
+    .routine-section h2 {
+        text-align: center;
+    }
+
+    .routine-table th,
+    .routine-table td {
+        padding: 13px 12px;
+        white-space: nowrap;
+    }
+}
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 130px 30px 80px;
+    text-align: center;
+}
+
+
+/* ---------- DASHBOARD HEADING ---------- */
+
+.dashboard-heading {
+    margin-bottom: 50px;
+}
+
+.dashboard-welcome {
+    margin: 0 0 10px;
+
+    color: #7dd3fc;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-heading h1 {
+    margin: 0 0 14px;
+
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #65cfff,
+        #b477ff
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 25px rgba(80, 170, 255, 0.15);
+}
+
+.dashboard-heading > p:last-child {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #b9cdef;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ---------- DASHBOARD CARDS ---------- */
+
+.dashboard-cards {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.dashboard-card {
+    position: relative;
+
+    min-height: 250px;
+
+    padding: 35px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: white;
+
+    background: rgba(5, 15, 40, 0.78);
+
+    border: 1px solid rgba(90, 160, 255, 0.4);
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Card glow */
+
+.dashboard-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -80px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 198, 255, 0.12);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+}
+
+
+/* Card hover */
+
+.dashboard-card:hover {
+    color: white;
+
+    transform: translateY(-7px);
+
+    border-color: #55c8ff;
+
+    box-shadow:
+        0 15px 35px rgba(40, 120, 255, 0.2),
+        0 0 25px rgba(70, 160, 255, 0.08);
+}
+
+
+/* ---------- CARD ICON ---------- */
+
+.dashboard-icon {
+    width: 70px;
+    height: 70px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(70, 150, 255, 0.1);
+
+    border: 1px solid rgba(90, 170, 255, 0.25);
+
+    font-size: 36px;
+
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover .dashboard-icon {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(70, 170, 255, 0.18);
+}
+
+
+/* ---------- CARD TEXT ---------- */
+
+.dashboard-card h2 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.dashboard-card p {
+    max-width: 360px;
+
+    margin: 0 0 18px;
+
+    color: #b9cdef;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.dashboard-card span {
+    color: #65cfff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+.dashboard-card:hover span {
+    letter-spacing: 0.3px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 576px) {
+
+    .dashboard-page {
+        padding: 115px 20px 55px;
+    }
+
+    .dashboard-heading {
+        margin-bottom: 35px;
+    }
+
+    .dashboard-heading h1 {
+        font-size: 40px;
+    }
+
+    .dashboard-heading > p:last-child {
+        font-size: 14px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .dashboard-card {
+        min-height: 230px;
+        padding: 30px 22px;
+    }
+
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+
+.routine-table td:last-child {
+    white-space: nowrap;
+}
+
+.routine-table td:last-child form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.routine-table .edit-icon,
+.routine-table .delete-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 1px solid rgba(100, 180, 255, 0.4);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    cursor: pointer;
+}
+
+.progress-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px 30px;
+
+    background: rgba(5, 15, 45, 0.85);
+    border: 1px solid rgba(80, 160, 255, 0.5);
+    border-radius: 18px;
+
+    color: white;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.progress-header h2 {
+    margin: 0;
+    color: white;
+    font-size: 24px;
+}
+
+.progress-header span {
+    color: #5ec8ff;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4facfe;
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+}
+
+.progress-section p {
+    margin: 12px 0 0;
+    color: #d9e7ff;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 120px 20px 60px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 40px;
+
+    background: rgba(5, 15, 45, 0.88);
+    border: 1px solid rgba(80, 160, 255, 0.55);
+    border-radius: 22px;
+
+    box-shadow: 0 0 30px rgba(50, 140, 255, 0.18);
+
+    color: white;
+}
+
+.auth-card h1 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-card > p {
+    text-align: center;
+    color: #c9d8ef;
+    margin-bottom: 30px;
+}
+
+.auth-card form > div {
+    margin-bottom: 20px;
+}
+
+.auth-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #dce9ff;
+    font-weight: 500;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 13px 15px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(80, 160, 255, 0.45);
+    border-radius: 10px;
+
+    color: white;
+    outline: none;
+}
+
+.auth-card input::placeholder {
+    color: #9eabc0;
+}
+
+.auth-card input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 12px rgba(79, 172, 254, 0.25);
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 13px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #4facfe;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.auth-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(79, 172, 254, 0.45);
+}
+
+.auth-card a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   PROFILE PAGE
+   ===================================================== */
+
+.profile-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 30px 70px;
+}
+
+/* ---------- PROFILE HEADING ---------- */
+
+.profile-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.profile-heading p:first-child {
+    margin-bottom: 8px;
+
+    color: #8fcfff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.profile-heading h1 {
+    margin: 0 0 10px;
+
+    color: white;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.profile-heading h1 span {
+    background: linear-gradient(90deg, #00c6ff, #a855f7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-heading p:last-child {
+    margin: 0;
+
+    color: #afc6e8;
+    font-size: 14px;
+}
+
+
+/* ---------- PROFILE CARD ---------- */
+
+.profile-card {
+    position: relative;
+
+    max-width: 650px;
+    margin: 0 auto;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: rgba(4, 12, 35, 0.86);
+
+    border: 1px solid rgba(100, 175, 255, 0.45);
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 35px rgba(50, 120, 255, 0.12);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition: 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(70, 150, 255, 0.22);
+}
+
+
+/* ---------- PROFILE ICON ---------- */
+
+.profile-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(70, 150, 255, 0.12);
+
+    border: 1px solid rgba(90, 180, 255, 0.45);
+
+    font-size: 38px;
+
+    box-shadow: 0 0 25px rgba(70, 150, 255, 0.18);
+}
+
+
+/* ---------- NAME & EMAIL ---------- */
+
+.profile-card h2 {
+    margin: 0 0 6px;
+
+    color: white;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.profile-email {
+    margin-bottom: 30px;
+
+    color: #9fb9dc;
+    font-size: 14px;
+}
+
+
+/* ---------- PROFILE INFORMATION ---------- */
+
+.profile-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.profile-item {
+    padding: 18px;
+
+    text-align: left;
+
+    background: rgba(15, 35, 70, 0.55);
+
+    border: 1px solid rgba(90, 160, 255, 0.25);
+
+    border-radius: 14px;
+
+    transition: 0.25s ease;
+}
+
+.profile-item:hover {
+    border-color: rgba(100, 190, 255, 0.55);
+
+    transform: translateY(-2px);
+}
+
+.profile-item span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #8fb4df;
+    font-size: 12px;
+}
+
+.profile-item strong {
+    color: #f1f7ff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+
+/* ---------- BACK BUTTON ---------- */
+
+.profile-back {
+    display: inline-block;
+
+    padding: 11px 22px;
+
+    border: 1px solid rgba(80, 170, 255, 0.45);
+    border-radius: 10px;
+
+    color: #dcecff;
+
+    background: rgba(50, 130, 255, 0.08);
+
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.profile-back:hover {
+    color: white;
+
+    background: rgba(50, 130, 255, 0.18);
+
+    border-color: #55c8ff;
+
+    transform: translateY(-2px);
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+
+    .profile-page {
+        padding: 110px 18px 50
