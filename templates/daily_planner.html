@@ -28,6 +28,11 @@ Daily Target Planner
         <form method="POST" action="/daily-routine">
 
             <div>
+                <label>Date</label>
+                <input type="date" name="date" value="{{selected_date}}" required>
+            </div>
+
+            <div>
                 <label>Time</label>
                 <input type="time" name="time" required>
             </div>
@@ -82,6 +87,19 @@ Daily Target Planner
 </div>
 
 
+    
+
+    <div class="date-selector">
+    <label for="routine-date">Select Date</label>
+
+    <input
+        type="date"
+        id="routine-date"
+        value="{{ selected_date }}"
+        onchange="changeDate(this.value)"
+    >
+    </div>
+
     <div class="routine-section">
 
         <h2>Today's Routine</h2>
@@ -113,6 +131,7 @@ Daily Target Planner
         <td>
     <form method="POST" action="/complete-target">
         <input type="hidden" name="target_id" value="{{ item._id }}">
+        <input type="hidden" name="selected_date" value="{{ selected_date }}">
         <button type="submit">
             {% if item.completed %}
                 ✅ Completed
@@ -125,6 +144,7 @@ Daily Target Planner
 <td>
     <form method="GET" action="/edit-target">
     <input type="hidden" name="target_id" value="{{ item._id }}">
+    <input type="hidden" name="selected_date" value="{{ selected_date }}">
 
     <button type="submit" class="edit-icon">
         ✏️
@@ -132,6 +152,7 @@ Daily Target Planner
 </form>
     <form method="POST" action="/delete-target">
         <input type="hidden" name="target_id" value="{{ item._id }}">
+        <input type="hidden" name="selected_date" value="{{ selected_date }}">
 
         <button type="submit" class="delete-icon">
             🗑️
@@ -151,5 +172,13 @@ Daily Target Planner
     </div>
 
 </section>
+
+<script>
+function changeDate(date) {
+    if (date) {
+        window.location.href = "/daily-routine?date=" + date;
+    }
+}
+</script>
 
 {% endblock %}

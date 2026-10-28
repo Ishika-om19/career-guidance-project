@@ -1,8 +1,10 @@
-from flask import Flask,render_template, request, session, redirect
+from flask import Flask,render_template, request, session, redirect, url_for
 from dotenv import load_dotenv
 from google import genai
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from datetime import date
+import certifi
 import bcrypt
 import os
 import time
@@ -10,7 +12,14 @@ import re
 
 load_dotenv()
 
-mongo_client = MongoClient(os.getenv("MONGO_URL"))
+mongo_client = MongoClient(
+    os.getenv("MONGO_URL"),
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=30000
+)
+
+mongo_client.admin.command("ping")
+print("MongoDB connected successfully!")
 
 db = mongo_client["career_guidance"]
 
@@ -126,10 +135,12 @@ def daily_routine():
         target = request.form["target"]
         duration = request.form["duration"]
         category = request.form["category"]
+        routine_date = request.form["date"]
 
         routine_item = {
             "_id": ObjectId(),
 
+            "date": routine_date,
             "time": time,
             "target": target,
             "duration": duration,
@@ -142,13 +153,23 @@ def daily_routine():
             {"$push": {"daily_routine": routine_item}}
         )
 
-        return redirect("/daily-routine")
+        return redirect(url_for("daily_routine",date=routine_date)
+                    )
 
     user = users_collection.find_one(
         {"_id": ObjectId(session["user_id"])}
     )
 
     routine = user.get("daily_routine", [])
+
+    selected_date = request.args.get("date")
+    if not selected_date:
+        selected_date = date.today().isoformat()
+
+    routine = [
+        item for item in routine
+        if item.get("date") == selected_date
+    ]
 
     total_targets = len(routine)
 
@@ -167,7 +188,8 @@ def daily_routine():
         routine=routine,
         progress=progress,
         total_targets=total_targets,
-        completed_targets=completed_targets
+        completed_targets=completed_targets,
+        selected_date=selected_date
     )
 
 @app.route("/complete-target", methods=["POST"])
@@ -177,6 +199,8 @@ def complete_target():
         return redirect("/login")
 
     target_id = request.form["target_id"]
+
+    selected_date = request.form.get("selected_date")
 
     user_id = ObjectId(session["user_id"])
 
@@ -200,7 +224,9 @@ def complete_target():
         {"$set": {"daily_routine": routine}}
     )
 
-    return redirect("/daily-routine")
+    return redirect(
+    url_for("daily_routine", date=selected_date)
+)
 
 @app.route("/delete-target", methods=["POST"])
 def delete_target():
@@ -209,6 +235,7 @@ def delete_target():
         return redirect("/login")
 
     target_id = request.form["target_id"]
+    selected_date = request.form.get("selected_date")
 
     users_collection.update_one(
         {"_id": ObjectId(session["user_id"])},
@@ -221,7 +248,9 @@ def delete_target():
         }
     )
 
-    return redirect("/daily-routine")
+    return redirect(
+        url_for("daily_routine", date=selected_date)
+    )
 
 @app.route("/edit-target", methods=["GET", "POST"])
 def edit_target():
@@ -229,57 +258,53 @@ def edit_target():
     if "user_id" not in session:
         return redirect("/login")
 
-    # Get target ID
-    if request.method == "POST":
-        target_id = request.form["target_id"]
-    else:
-        target_id = request.args.get("target_id")
-
     user_id = ObjectId(session["user_id"])
 
-    # Find user
+    if request.method == "POST":
+        target_id = request.form["target_id"]
+        selected_date = request.form.get("selected_date")
+    else:
+        target_id = request.args.get("target_id")
+        selected_date = request.args.get("date")
+
     user = users_collection.find_one({
         "_id": user_id
     })
 
-    routine = user.get("daily_routine", [])
+    if not user:
+        return redirect("/login")
 
-    # POST → update target
+    routine = user.get("daily_routine", [])
+    target = None
+
+    for item in routine:
+        if str(item["_id"]) == target_id:
+            target = item
+            break
+
+    if not target:
+        return "Target not found!", 404
+
     if request.method == "POST":
 
-        for item in routine:
-
-            if str(item["_id"]) == target_id:
-
-                item["time"] = request.form["time"]
-                item["target"] = request.form["target"]
-                item["duration"] = request.form["duration"]
-                item["category"] = request.form["category"]
-
-                break
+        target["time"] = request.form["time"]
+        target["target"] = request.form["target"]
+        target["duration"] = request.form["duration"]
+        target["category"] = request.form["category"]
 
         users_collection.update_one(
             {"_id": user_id},
             {"$set": {"daily_routine": routine}}
         )
 
-        return redirect("/daily-routine")
-
-    # GET → show existing target
-    target = None
-
-    for item in routine:
-
-        if str(item["_id"]) == target_id:
-            target = item
-            break
-
-    if not target:
-        return "Target not found!"
+        return redirect(
+            url_for("daily_routine", date=selected_date)
+        )
 
     return render_template(
         "edit_target.html",
-        target=target
+        target=target,
+        selected_date=selected_date or target.get("date")
     )
 
 @app.route("/")
